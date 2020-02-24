@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:cards="clr-namespace:PanCardView;assembly=PanCardView"
+             xmlns:views="clr-namespace:CardUITest.Views"
+             mc:Ignorable="d"
+             x:Class="CardUITest.MainPage">
+
+    <Grid>
+        <cards:CardsView 
+            ItemsSource="{Binding Plants}"
+            x:Name="MainCardView"
+            IsCyclical="True">
+            <cards:CardsView.ItemTemplate>
+                <DataTemplate>
+                    <views:PlantCard
+                        Margin="0, 0, 0, -30"/>
+                </DataTemplate>
+            </cards:CardsView.ItemTemplate>
+        </cards:CardsView>
+
+        <Label
+            x:Name="PlantHeader"
+            Margin="20"
+            HorizontalOptions="Center"
+            Text="plants"/>
+
+    </Grid>
+
+</ContentPage>
+  

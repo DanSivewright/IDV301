@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
+             mc:Ignorable="d"
+             x:Class="CardUITest.Views.PlantCard">
+    <Grid>
+        <skia:SKCanvasView
+            x:Name="CardBackground"
+            HorizontalOptions="Fill"
+            PaintSurface="CardBackground_PaintSurface"
+            VerticalOptions="Fill"
+            />
+
+        <Image 
+            x:Name="PlantImage"
+            HeightRequest="400"
+            Source="{Binding Image}"
+            TranslationY="180"
+            VerticalOptions="Start"
+            WidthRequest="400" />
+
+        <StackLayout Margin="40,580,40,30">
+
+            <Label 
+                Text="{Binding PlantName}"
+                LineHeight="1"          
+                WidthRequest="300"
+                Style="{StaticResource Header}"
+                HorizontalOptions="Start"
+                VerticalOptions="Start"/>
+
+            <Label 
+                Text="{Binding PlantType}"
+                Margin="0,20,0,0"
+                Style="{StaticResource SubHeader}"
+                HorizontalOptions="Start"
+                VerticalOptions="Start"/>
+
+            <Label 
+                Text="learn more ⟶"
+                Style="{StaticResource LearnMore}"
+                Margin="0,20,0,0"
+                HorizontalOptions="Start"
+                VerticalOptions="Start"/>
+
+        </StackLayout>
+
+
+    </Grid>
+</ContentView>

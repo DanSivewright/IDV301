@@ -23,10 +23,10 @@
 
         <Label
             x:Name="PlantHeader"
-            Margin="20"
+            Margin="60"
             HorizontalOptions="Center"
-            Text="plants"/>
-
+            Text="plants"
+            Style="{ StaticResource TitleBar }"/>
     </Grid>
 
 </ContentPage>

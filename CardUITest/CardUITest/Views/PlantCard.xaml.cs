@@ -17,7 +17,7 @@ namespace CardUITest.Views
         private Plant _viewModel;
         private readonly float _density;
         private readonly float _cardTopMargin;
-        private readonly float _cornerRadius = 60f;
+        private float _cornerRadius = 60f;
         private CardState _cardState = CardState.Collapsed;
 
         //private static SKTypeface _typeface;
@@ -25,6 +25,7 @@ namespace CardUITest.Views
         // Cached skia color and paint object
         SKColor _plantColor;
         SKPaint _plantPaint;
+        private double _cardTopAnimPosition;
 
         public PlantCard()
         {
@@ -47,6 +48,9 @@ namespace CardUITest.Views
 
             _plantColor = Color.FromHex(_viewModel.PlantColor).ToSKColor();
             _plantPaint = new SKPaint() { Color = _plantColor };
+
+            // Setup initial values
+            _cardTopAnimPosition = _cardTopMargin;
 
             // repaint the surfce with the new colors
             CardBackground.InvalidateSurface();
@@ -73,7 +77,7 @@ namespace CardUITest.Views
             canvas.Clear();
 
             canvas.DrawRoundRect(
-                rect: new SKRect(0, (float)_cardTopMargin, info.Width, info.Height),
+                rect: new SKRect(0, (float)_cardTopAnimPosition, info.Width, info.Height),
                 r: new SKSize(_cornerRadius, _cornerRadius),
                 paint: _plantPaint);
         }
@@ -100,7 +104,37 @@ namespace CardUITest.Views
 
         private void AnimateTransition(CardState cardState)
         {
-            
+            var parentAnimation = new Animation();
+
+            if (cardState == CardState.Expanded)
+            {
+                parentAnimation.Add(0, .1, CreateCardAnimation(cardState));
+            } 
+            else
+            {
+                parentAnimation.Add(0, .1, CreateCardAnimation(cardState));
+            }
+            parentAnimation.Commit(this, "CardExpand", 16, 2000);
+        }
+
+        private Animation CreateCardAnimation(CardState cardState)
+        {
+            // work out where the top of the card should be
+            var cardAnimStart = cardState == CardState.Expanded ? _cardTopMargin : -_cornerRadius;
+            var cardAnimEnd = cardState == CardState.Expanded ? -_cornerRadius : _cardTopMargin;
+
+            var cardAnim = new Animation(
+                v =>
+                {
+
+                    _cardTopAnimPosition = v;
+                    CardBackground.InvalidateSurface();
+                },
+                cardAnimStart,
+                cardAnimEnd,
+                Easing.SinInOut
+                );
+            return cardAnim;
         }
     }
 }

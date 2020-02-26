@@ -88,6 +88,12 @@
     <ImageAsset Include="Assets.xcassets\aquilegia.png.imageset\Layer 1@3x.png">
       <Visible>false</Visible>
     </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\menu.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\menu.imageset\menu.png">
+      <Visible>false</Visible>
+    </ImageAsset>
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
     <ImageAsset Include="Assets.xcassets\aloe_vera.png.imageset\Layer 1@1.5x.png">
       <Visible>false</Visible>

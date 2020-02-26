@@ -27,6 +27,15 @@
             HorizontalOptions="Center"
             Text="plants"
             Style="{ StaticResource TitleBar }"/>
+
+        <Image 
+            x:Name="menu_button"
+            WidthRequest="18"
+            HeightRequest="18"
+            Source="menu"
+            HorizontalOptions="Start"
+            VerticalOptions="Start"
+            Margin="40, 65, 0, 0"/>
     </Grid>
 
 </ContentPage>

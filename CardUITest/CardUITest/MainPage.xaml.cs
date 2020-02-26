@@ -36,7 +36,35 @@ namespace CardUITest
 
         private void CardExpand(CardEvent obj)
         {
+            // Turn off swipe interaction
             MainCardView.IsUserInteractionEnabled = false;
+
+            // Animate title out
+            AnimateTitle(CardState.Expanded);
+        }
+
+        private void BackMenu_Tapped(object sender, EventArgs e)
+        {
+            // re-enable swiping
+            MainCardView.IsUserInteractionEnabled = true;
+
+            // Tell the card to collapse 
+            ((PlantCard)MainCardView.CurrentView).GoToState(CardState.Collapsed);
+
+            // Animate Title Back in
+            AnimateTitle(CardState.Collapsed);
+        }
+
+        private void AnimateTitle(CardState cardState)
+        {
+            var translateY = cardState == CardState.Expanded ? 0 - (PlantHeader.Height + PlantHeader.Margin.Top) : 0;
+            var opacity = cardState == CardState.Expanded ? 0 : 1;
+
+            var animation = new Animation();
+            animation.Add(0, 1, new Animation(v => PlantHeader.TranslationY = v, PlantHeader.TranslationY, translateY));
+            animation.Add(0, 1, new Animation(v => PlantHeader.Opacity = v, PlantHeader.Opacity, opacity));
+
+            animation.Commit(this, "titleAnimation", 16, 250);
         }
 
         protected override void OnDisappearing()
@@ -113,9 +141,6 @@ namespace CardUITest
             nextCard.MainImage.TranslationY = LimitToRange(offset, _plantImageTranslationY, _plantImageTranslationY + _movementFactor);
         }
 
-        private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
-        {
-
-        }
+        
     }
 }

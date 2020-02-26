@@ -18,6 +18,7 @@ namespace CardUITest.Views
         private readonly float _density;
         private readonly float _cardTopMargin;
         private readonly float _cornerRadius = 60f;
+        private CardState _cardState = CardState.Collapsed;
 
         //private static SKTypeface _typeface;
 
@@ -77,6 +78,29 @@ namespace CardUITest.Views
                 paint: _plantPaint);
         }
 
-        
+        private void ManagePlant_Tapped(object sender, EventArgs e)
+        {
+            // Go to state of expanded
+            GoToState(CardState.Expanded);
+        }
+
+        public void GoToState(CardState cardState)
+        {
+            // trigger animations
+            if (_cardState == cardState)
+                return;
+
+            MessagingCenter.Send<CardEvent>(new CardEvent(), cardState.ToString());
+
+            // Handle Animations
+            AnimateTransition(cardState);
+
+            _cardState = cardState;
+        }
+
+        private void AnimateTransition(CardState cardState)
+        {
+            
+        }
     }
 }

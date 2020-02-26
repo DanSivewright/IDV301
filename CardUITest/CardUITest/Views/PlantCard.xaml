@@ -40,11 +40,18 @@
                 VerticalOptions="Start"/>
 
             <Label 
-                Text="learn more ⟶"
+                x:Name="ManagePlantLabel"
+                Text="manage plant ⟶"
                 Style="{StaticResource LearnMore}"
                 Margin="0,20,0,0"
                 HorizontalOptions="Start"
-                VerticalOptions="Start"/>
+                VerticalOptions="Start">
+
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="ManagePlant_Tapped"/>
+                </Label.GestureRecognizers>
+
+            </Label>
 
         </StackLayout>
 

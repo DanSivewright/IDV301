@@ -25,6 +25,7 @@
             x:Name="PlantHeader"
             Margin="60"
             HorizontalOptions="Center"
+            VerticalOptions="Start"
             Text="plants"
             Style="{ StaticResource TitleBar }"/>
 
@@ -35,7 +36,12 @@
             Source="menu"
             HorizontalOptions="Start"
             VerticalOptions="Start"
-            Margin="40, 65, 0, 0"/>
+            Margin="40, 65, 0, 0">
+
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer Tapped="BackMenu_Tapped"/>
+            </Image.GestureRecognizers>
+        </Image>
     </Grid>
 
 </ContentPage>

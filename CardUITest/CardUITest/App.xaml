@@ -18,7 +18,7 @@
 
         <Style x:Key="Header" TargetType="Label">
             <Setter Property="FontFamily" Value="{StaticResource HeaderFont}"/>
-            <Setter Property="FontSize" Value="48"/>
+            <Setter Property="FontSize" Value="60"/>
             <Setter Property="TextColor" Value="White"/>
         </Style>
 

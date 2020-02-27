@@ -26,6 +26,7 @@
 
             <Label 
                 Text="{Binding PlantName}"
+                x:Name="PlantName"
                 LineHeight="1"          
                 WidthRequest="300"
                 Style="{StaticResource Header}"

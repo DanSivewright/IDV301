@@ -61,10 +61,18 @@ namespace CardUITest
             var opacity = cardState == CardState.Expanded ? 0 : 1;
 
             var animation = new Animation();
-            animation.Add(0, 1, new Animation(v => PlantHeader.TranslationY = v, PlantHeader.TranslationY, translateY));
-            animation.Add(0, 1, new Animation(v => PlantHeader.Opacity = v, PlantHeader.Opacity, opacity));
 
-            animation.Commit(this, "titleAnimation", 16, 250);
+            if (cardState == CardState.Expanded)
+            {
+                animation.Add(0.00, 0.25, new Animation(v => PlantHeader.TranslationY = v, PlantHeader.TranslationY, translateY));
+                animation.Add(0.00, 0.25, new Animation(v => PlantHeader.Opacity = v, PlantHeader.Opacity, opacity));
+            }
+            else
+            {
+                animation.Add(0.75, 1.0, new Animation(v => PlantHeader.TranslationY = v, PlantHeader.TranslationY, translateY));
+                animation.Add(0.75, 0.25, new Animation(v => PlantHeader.Opacity = v, PlantHeader.Opacity, opacity));
+            }
+            animation.Commit(this, "titleAnimation", 16, 1000);
         }
 
         protected override void OnDisappearing()

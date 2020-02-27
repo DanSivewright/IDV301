@@ -108,13 +108,52 @@ namespace CardUITest.Views
 
             if (cardState == CardState.Expanded)
             {
-                parentAnimation.Add(0, .1, CreateCardAnimation(cardState));
-            } 
+                parentAnimation.Add(0.00, 0.10, CreateCardAnimation(cardState));
+                parentAnimation.Add(0.00, 0.50, CreateImageAnimation(cardState));
+                parentAnimation.Add(0.00, 0.50, CreatePlantNameAnimation(cardState));
+            }
             else
             {
-                parentAnimation.Add(0, .1, CreateCardAnimation(cardState));
+                parentAnimation.Add(0.20, 0.40, CreateImageAnimation(cardState));
+                parentAnimation.Add(0.00, 0.50, CreatePlantNameAnimation(cardState));
+                parentAnimation.Add(0.20, 0.40, CreateCardAnimation(cardState));
             }
             parentAnimation.Commit(this, "CardExpand", 16, 2000);
+        }
+
+        private Animation CreatePlantNameAnimation(CardState cardState)
+        {
+            var nameAnimStart = cardState == CardState.Expanded ? 0 : -60;
+            var nameAnimEnd = cardState == CardState.Expanded ? -60 : 0;
+
+            var imageAnim = new Animation(
+                v =>
+                {
+                    PlantImage.TranslationY = v;
+                },
+                nameAnimStart,
+                nameAnimEnd,
+                Easing.SpringOut
+                );
+            return imageAnim;
+        }
+
+        private Animation CreateImageAnimation(CardState cardState)
+        {
+            // work out where the top of the card should be
+            var imageAnimStart = cardState == CardState.Expanded ? PlantImage.TranslationY : 60;
+            var imageAnimEnd = cardState == CardState.Expanded ? 60 : 180;
+
+            var imageAnim = new Animation(
+                v =>
+                {
+                    PlantImage.TranslationY = v;
+                },
+                imageAnimStart,
+                imageAnimEnd,
+                Easing.SpringOut
+                );
+            return imageAnim;
         }
 
         private Animation CreateCardAnimation(CardState cardState)

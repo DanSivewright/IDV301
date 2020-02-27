@@ -110,26 +110,65 @@ namespace CardUITest.Views
             {
                 parentAnimation.Add(0.00, 0.10, CreateCardAnimation(cardState));
                 parentAnimation.Add(0.00, 0.50, CreateImageAnimation(cardState));
-                parentAnimation.Add(0.00, 0.50, CreatePlantNameAnimation(cardState));
+                parentAnimation.Add(0.10, 0.50, CreatePlantNameAnimation(cardState));
+                parentAnimation.Add(0.15, 0.50, CreatePlantTypeAnimation(cardState));
+                parentAnimation.Add(0.00, 0.25, CreateManageAnimation(cardState));
             }
             else
             {
                 parentAnimation.Add(0.20, 0.40, CreateImageAnimation(cardState));
-                parentAnimation.Add(0.00, 0.50, CreatePlantNameAnimation(cardState));
                 parentAnimation.Add(0.20, 0.40, CreateCardAnimation(cardState));
+                parentAnimation.Add(0.20, 0.45, CreatePlantNameAnimation(cardState));
+                parentAnimation.Add(0.20, 0.45, CreatePlantTypeAnimation(cardState));
+                parentAnimation.Add(0.30, 0.40, CreateManageAnimation(cardState));
             }
             parentAnimation.Commit(this, "CardExpand", 16, 2000);
         }
 
-        private Animation CreatePlantNameAnimation(CardState cardState)
+        private Animation CreateManageAnimation(CardState cardState)
         {
-            var nameAnimStart = cardState == CardState.Expanded ? 0 : -60;
-            var nameAnimEnd = cardState == CardState.Expanded ? -60 : 0;
+            var manageAnimStart = cardState == CardState.Expanded ? 0 : 100;
+            var manageAnimSEnd = cardState == CardState.Expanded ? 100 : 0;
+
+            var manageAnim = new Animation(
+                v =>
+                {
+                    ManagePlantLabel.TranslationX = v;
+                    ManagePlantLabel.Opacity = 1 - (v / 100);
+                },
+                manageAnimStart,
+                manageAnimSEnd,
+                Easing.SinInOut
+                );
+            return manageAnim;
+        }
+
+        private Animation CreatePlantTypeAnimation(CardState cardState)
+        {
+            var typeAnimStart = cardState == CardState.Expanded ? 0 : -120;
+            var typeAnimEnd = cardState == CardState.Expanded ? -120 : 0;
 
             var imageAnim = new Animation(
                 v =>
                 {
-                    PlantImage.TranslationY = v;
+                    PlantType.TranslationY = v;
+                },
+                typeAnimStart,
+                typeAnimEnd,
+                Easing.SpringOut
+                );
+            return imageAnim;
+        }
+
+        private Animation CreatePlantNameAnimation(CardState cardState)
+        {
+            var nameAnimStart = cardState == CardState.Expanded ? 0 : -120;
+            var nameAnimEnd = cardState == CardState.Expanded ? -120 : 0;
+
+            var imageAnim = new Animation(
+                v =>
+                {
+                    PlantName.TranslationY = v;
                 },
                 nameAnimStart,
                 nameAnimEnd,

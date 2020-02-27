@@ -23,7 +23,7 @@ namespace CardUITest.ViewModels
                 },
                 new Plant()
                 {
-                     PlantName = "aquilegia vulgaris",
+                     PlantName = "test",
                      PlantType = "columbine",
                      Image = "aquilegia.png",
                      PlantColor = "#9c51b6"

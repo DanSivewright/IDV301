@@ -70,7 +70,7 @@ namespace CardUITest
             else
             {
                 animation.Add(0.75, 1.0, new Animation(v => PlantHeader.TranslationY = v, PlantHeader.TranslationY, translateY));
-                animation.Add(0.75, 0.25, new Animation(v => PlantHeader.Opacity = v, PlantHeader.Opacity, opacity));
+                animation.Add(0.75, 1.0, new Animation(v => PlantHeader.Opacity = v, PlantHeader.Opacity, opacity));
             }
             animation.Commit(this, "titleAnimation", 16, 1000);
         }

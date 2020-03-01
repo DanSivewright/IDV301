@@ -9,8 +9,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CardUITest.iOS", "CardUITes
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CardUITest", "CardUITest\CardUITest\CardUITest.csproj", "{9ECD1CE7-8111-4908-A04E-1C9FEC297D9B}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MongoCRUD", "..\..\ASP.Net\Dotnet Core\MongoCRUD\MongoCRUD\MongoCRUD.csproj", "{602D613C-597C-4CDF-8235-8E09CED920A5}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -75,18 +73,6 @@ Global
 		{9ECD1CE7-8111-4908-A04E-1C9FEC297D9B}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
 		{9ECD1CE7-8111-4908-A04E-1C9FEC297D9B}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 		{9ECD1CE7-8111-4908-A04E-1C9FEC297D9B}.Release|iPhoneSimulator.Deploy.0 = Release|Any CPU
-		{602D613C-597C-4CDF-8235-8E09CED920A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{602D613C-597C-4CDF-8235-8E09CED920A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{602D613C-597C-4CDF-8235-8E09CED920A5}.Debug|iPhone.ActiveCfg = Debug|Any CPU
-		{602D613C-597C-4CDF-8235-8E09CED920A5}.Debug|iPhone.Build.0 = Debug|Any CPU
-		{602D613C-597C-4CDF-8235-8E09CED920A5}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
-		{602D613C-597C-4CDF-8235-8E09CED920A5}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
-		{602D613C-597C-4CDF-8235-8E09CED920A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{602D613C-597C-4CDF-8235-8E09CED920A5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{602D613C-597C-4CDF-8235-8E09CED920A5}.Release|iPhone.ActiveCfg = Release|Any CPU
-		{602D613C-597C-4CDF-8235-8E09CED920A5}.Release|iPhone.Build.0 = Release|Any CPU
-		{602D613C-597C-4CDF-8235-8E09CED920A5}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
-		{602D613C-597C-4CDF-8235-8E09CED920A5}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

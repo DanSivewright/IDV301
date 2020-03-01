@@ -19,7 +19,7 @@ namespace CardUITest.ViewModels
         {
             get
             {
-                return _students
+                return _students;
             }
             set
             {

@@ -1,5 +1,4 @@
-﻿using CardUITest.ViewModels;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,12 +10,11 @@ using Xamarin.Forms.Xaml;
 namespace CardUITest.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class Students : ContentView
+    public partial class CreatePage : ContentPage
     {
-        public Students()
+        public CreatePage()
         {
             InitializeComponent();
-            BindingContext = new StudentViewModel();
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CardUITest.Views;
+using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -10,7 +11,7 @@ namespace CardUITest
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new CreatePage();
         }
 
         protected override void OnStart()

@@ -41,5 +41,10 @@
 	</array>
 	<key>CFBundleIdentifier</key>
 	<string>com.dansivewright.PlantTestApp</string>
+  <key>NSAppTransportSecurity</key>
+  <dict>
+    <key>NSAllowArbitraryLoads</key>
+    <true/>
+  </dict>
 </dict>
 </plist>

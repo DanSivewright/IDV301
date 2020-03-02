@@ -28,15 +28,13 @@
 	<string>1.0</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
-	<key>CFBundleName</key>
-	<string>CardUITest</string>
 	<key>XSAppIconAssets</key>
 	<string>Assets.xcassets/AppIcon.appiconset</string>
-  <key>NSAppTransportSecurity</key>
-  <dict>
-    <key>NSAllowsArbitraryLoads</key>
-    <true/>
-  </dict>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Montserrat-Bold.ttf</string>
@@ -45,6 +43,8 @@
 		<string>Montserrat-Thin.ttf</string>
 	</array>
 	<key>CFBundleIdentifier</key>
-	<string>com.dansivewright.PlantTestApp</string>
+	<string>com.wixels.alo</string>
+	<key>CFBundleName</key>
+	<string>alo</string>
 </dict>
 </plist>

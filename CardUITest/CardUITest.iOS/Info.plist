@@ -40,11 +40,11 @@
 		<string>Montserrat-Thin.ttf</string>
 	</array>
 	<key>CFBundleIdentifier</key>
-	<string>com.dansivewright.PlantTestApp</string>
-  <key>NSAppTransportSecurity</key>
-  <dict>
-    <key>NSAllowArbitraryLoads</key>
-    <true/>
-  </dict>
+	<string>com.wixels.PlantTestApp</string>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowArbitraryLoads</key>
+		<true/>
+	</dict>
 </dict>
 </plist>

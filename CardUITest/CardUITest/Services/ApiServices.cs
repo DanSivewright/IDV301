@@ -15,7 +15,7 @@ namespace CardUITest.Services
     {
         internal async Task<bool> CreateAsync(string firstName, string lastName, string emailAddress)
         {
-            var client = new HttpClient();
+            var client = new HttpClient(new System.Net.Http.HttpClientHandler());
 
             var model = new Models.Student
             {
@@ -28,7 +28,7 @@ namespace CardUITest.Services
             HttpContent content = new StringContent(json);
             content.Headers.ContentType = new MediaTypeHeaderValue("application/json");
 
-            var res = await client.PostAsync("https://10.0.0.2:44377/Student/Create", content);
+            var res = await client.PostAsync("https://localhost:5001/Student/Create", content);
 
             return res.IsSuccessStatusCode;
         }

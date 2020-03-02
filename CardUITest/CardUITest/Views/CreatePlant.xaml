@@ -7,9 +7,9 @@
              x:Class="CardUITest.Views.CreatePlant">
 
     <StackLayout Margin="20,100,20,0">
-        <Entry Placeholder="Name"/>
-        <Entry Placeholder="Type"/>
-        <Entry Placeholder="Color"/>
+        <Entry x:Name="plantName" Placeholder="Name"/>
+        <Entry x:Name="plantType" Placeholder="Type"/>
+        <Entry x:Name="plantColor" Placeholder="Color"/>
 
         <Button Text="Save Plant"
                 x:Name="saveButton"

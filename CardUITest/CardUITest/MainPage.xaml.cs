@@ -1,7 +1,9 @@
-﻿using CardUITest.ViewModels;
+﻿using CardUITest.Models;
+using CardUITest.ViewModels;
 using CardUITest.Views;
 using PanCardView;
 using PanCardView.EventArgs;
+using SQLite;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -32,6 +34,17 @@ namespace CardUITest
             base.OnAppearing();
             MainCardView.UserInteracted += MainCardView_UserInteracted;
             MessagingCenter.Subscribe<CardEvent>(this, CardState.Expanded.ToString(), CardExpand);
+
+            using (SQLiteConnection conn = new SQLiteConnection(App.FilePath))
+            {
+                // Delete all the contents of the table
+                //conn.DropTable<Plant>();
+
+                conn.CreateTable<Plant>();
+                var plants = conn.Table<Plant>().ToList();
+
+                MainCardView.ItemsSource = plants;
+            }
         }
 
         private void CardExpand(CardEvent obj)
@@ -149,6 +162,9 @@ namespace CardUITest
             nextCard.MainImage.TranslationY = LimitToRange(offset, _plantImageTranslationY, _plantImageTranslationY + _movementFactor);
         }
 
-        
+        async private void CreatePlant_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PushModalAsync(new CreatePlant());
+        }
     }
 }

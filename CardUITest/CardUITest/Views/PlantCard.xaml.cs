@@ -8,6 +8,7 @@ using SkiaSharp;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using SkiaSharp.Views.Forms;
+using CardUITest.Models;
 
 namespace CardUITest.Views
 {

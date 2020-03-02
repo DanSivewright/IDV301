@@ -9,11 +9,17 @@ namespace CardUITest.Models
 {
     public class Plant
     {
-        [PrimaryKey]
+        public Plant()
+        {
+            Image = "aquilegia.png";
+        }
+        [PrimaryKey, AutoIncrement]
         public int id { get; set; }
         public string PlantName { get; set; }
         public string PlantType { get; set; }
-        public string Image { get; set; }
+        public string Image { get; set; } 
+
+        [MaxLength(6)]
         public string PlantColor { get; set; }
     }
 }

@@ -10,7 +10,7 @@
 
     <Grid>
         <cards:CardsView 
-            ItemsSource="{Binding Plants}"
+            
             x:Name="MainCardView"
             IsCyclical="True">
             <cards:CardsView.ItemTemplate>
@@ -28,6 +28,14 @@
             VerticalOptions="Start"
             Text="plants"
             Style="{ StaticResource TitleBar }"/>
+        <Button
+            x:Name="CreatePlant"
+            Margin="0, 49, 40, 0"
+            HorizontalOptions="End"
+            VerticalOptions="Start"
+            Text="create"
+            Style="{ StaticResource TitleBar}"
+            Clicked="CreatePlant_Clicked"/>
 
         <Image 
             x:Name="menu_button"

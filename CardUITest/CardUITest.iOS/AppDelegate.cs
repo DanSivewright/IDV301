@@ -4,6 +4,8 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using Foundation;
+using Lottie.Forms.Droid;
+using Lottie.Forms.iOS.Renderers;
 using UIKit;
 
 namespace CardUITest.iOS
@@ -34,6 +36,8 @@ namespace CardUITest.iOS
             string completePath = Path.Combine(folderPath, fileName);
 
             LoadApplication(new App(completePath));
+
+            AnimationViewRenderer.Init();
 
             return base.FinishedLaunching(app, options);
         }

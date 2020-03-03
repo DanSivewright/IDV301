@@ -9,6 +9,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using SkiaSharp.Views.Forms;
 using CardUITest.Models;
+using CardUITest.Services;
 
 namespace CardUITest.Views
 {
@@ -22,6 +23,8 @@ namespace CardUITest.Views
         private CardState _cardState = CardState.Collapsed;
         private float _gradientHeight = 200f;
 
+        private static SKTypeface _typeface;
+
         //private static SKTypeface _typeface;
 
         // Cached skia color and paint object
@@ -30,6 +33,16 @@ namespace CardUITest.Views
         private double _cardTopAnimPosition;
         private float _gradientTransitionY;
 
+        // font and label 
+        private SKPaint _plantNamePaint;
+        private float _plantNamePosY;
+        private float _plantNamePosX;
+        private SKPaint _plantTypePaint;
+        private float _plantTypePosY;
+
+        private float _plantTypeOffsetY;
+        private float _plantNameOffsetY;
+
         public PlantCard()
         {
             InitializeComponent();
@@ -37,6 +50,13 @@ namespace CardUITest.Views
             _density = (float)Xamarin.Essentials.DeviceDisplay.MainDisplayInfo.Density;
             _cardTopMargin = 400f * _density;
             _cornerRadius = 30f * _density;
+
+            // Load up the typeface, just once
+            if (_typeface == null)
+            {
+                _typeface = DependencyService.Get<IFontHelper>().GetSkiaTypefaceFromAssetFont("Montserrat-Bold.ttf");
+            }
+
         }
 
         protected override void OnBindingContextChanged()
@@ -52,6 +72,26 @@ namespace CardUITest.Views
             _plantColor = Color.FromHex(_viewModel.PlantColor).ToSKColor();
             _plantPaint = new SKPaint() { Color = _plantColor };
             _gradientTransitionY = float.MaxValue;
+
+            _plantNamePaint = new SKPaint()
+            {
+                Typeface = _typeface,
+                IsAntialias = true,
+                Color = SKColors.White,
+                TextSize = 60f * _density
+            };
+
+            _plantNamePosY = 640f * _density;
+            _plantNamePosX = 40f * _density;
+
+            _plantTypePaint = new SKPaint()
+            {
+                Typeface = _typeface,
+                IsAntialias = true,
+                Color = SKColors.White,
+                TextSize = 25 * _density
+            };
+            _plantTypePosY = 690f * _density;
 
             // Setup initial values
             _cardTopAnimPosition = _cardTopMargin;
@@ -101,6 +141,28 @@ namespace CardUITest.Views
                 info.Width, info.Height);
             canvas.DrawRect(bottomRect, new SKPaint() { Color = SKColors.White });
 
+            DrawPlantName(canvas);
+            DrawPlantType(canvas);
+
+        }
+
+        private void DrawPlantType(SKCanvas canvas)
+        {
+            var textPos = new SKPoint(_plantNamePosX, _plantTypePosY + _plantTypeOffsetY);
+
+            // apply the gradient shader
+            _plantTypePaint.Shader = GetGradientShader(SKColors.White, SKColors.Black);
+
+            canvas.DrawText(_viewModel.PlantType, textPos, _plantTypePaint);
+        }
+
+        private void DrawPlantName(SKCanvas canvas)
+        {
+            // apply the gradient shader
+            _plantNamePaint.Shader = GetGradientShader(SKColors.White, SKColors.Black);
+
+            var textPos = new SKPoint(_plantNamePosX, _plantNameOffsetY + _plantNamePosY);
+            canvas.DrawText(_viewModel.PlantName, textPos, _plantNamePaint);
         }
 
         private SKShader GetGradientShader(SKColor fromColor, SKColor toColor)
@@ -222,7 +284,8 @@ namespace CardUITest.Views
             var imageAnim = new Animation(
                 v =>
                 {
-                    PlantType.TranslationY = v;
+                    _plantTypeOffsetY = (float)v * _density;
+                    CardBackground.InvalidateSurface();
                 },
                 typeAnimStart,
                 typeAnimEnd,
@@ -239,7 +302,8 @@ namespace CardUITest.Views
             var imageAnim = new Animation(
                 v =>
                 {
-                    PlantName.TranslationY = v;
+                    _plantNameOffsetY = (float)v * _density;
+                    CardBackground.InvalidateSurface();
                 },
                 nameAnimStart,
                 nameAnimEnd,

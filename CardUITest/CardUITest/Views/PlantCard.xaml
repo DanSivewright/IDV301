@@ -22,40 +22,19 @@
             VerticalOptions="Start"
             WidthRequest="400" />
 
-        <StackLayout Margin="40,580,40,30">
+        <Label 
+            x:Name="ManagePlantLabel"
+            Text="manage plant ⟶"
+            Style="{StaticResource LearnMore}"
+            Margin="40,720,0,0"
+            HorizontalOptions="Start"
+            VerticalOptions="Start">
 
-            <Label 
-                Text="{Binding PlantName}"
-                x:Name="PlantName"
-                LineHeight="1"          
-                WidthRequest="300"
-                Style="{StaticResource Header}"
-                HorizontalOptions="Start"
-                VerticalOptions="Start"/>
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer Tapped="ManagePlant_Tapped"/>
+            </Label.GestureRecognizers>
 
-            <Label 
-                Text="{Binding PlantType}"
-                x:Name="PlantType"
-                Margin="0,20,0,0"
-                Style="{StaticResource SubHeader}"
-                HorizontalOptions="Start"
-                VerticalOptions="Start"/>
-
-            <Label 
-                x:Name="ManagePlantLabel"
-                Text="manage plant ⟶"
-                Style="{StaticResource LearnMore}"
-                Margin="0,20,0,0"
-                HorizontalOptions="Start"
-                VerticalOptions="Start">
-
-                <Label.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="ManagePlant_Tapped"/>
-                </Label.GestureRecognizers>
-
-            </Label>
-
-        </StackLayout>
+        </Label>
 
 
     </Grid>

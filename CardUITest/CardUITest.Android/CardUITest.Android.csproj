@@ -71,6 +71,7 @@
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="FontAssetHelper.droid.cs" />
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\Montserrat-Bold.ttf" />

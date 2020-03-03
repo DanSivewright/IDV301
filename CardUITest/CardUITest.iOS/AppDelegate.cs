@@ -4,7 +4,6 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using Foundation;
-using Lottie.Forms.Droid;
 using Lottie.Forms.iOS.Renderers;
 using UIKit;
 

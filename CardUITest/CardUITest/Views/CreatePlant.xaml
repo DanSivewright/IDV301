@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
              mc:Ignorable="d"
              x:Class="CardUITest.Views.CreatePlant">
 
@@ -14,5 +15,14 @@
         <Button Text="Save Plant"
                 x:Name="saveButton"
                 Clicked="saveButton_Clicked"/>
+
+        <forms:AnimationView
+            HeightRequest="400"
+            TranslationY="140"
+            VerticalOptions="Start"
+            WidthRequest="400"
+            Animation="plant-small.json"
+            Loop="False"
+            AutoPlay="True"/>
     </StackLayout>
 </ContentPage>

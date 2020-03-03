@@ -4,6 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
+             xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms" 
              mc:Ignorable="d"
              x:Class="CardUITest.Views.PlantCard">
     <Grid>

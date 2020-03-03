@@ -4,6 +4,7 @@ using Android.Content.PM;
 using Android.Runtime;
 using Android.OS;
 using System.IO;
+//using Lottie.Forms;
 
 namespace CardUITest.Droid
 {
@@ -20,7 +21,7 @@ namespace CardUITest.Droid
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
             global::Xamarin.Forms.Forms.Init(this, savedInstanceState);
 
-            //AnimationViewRenderer.Init();
+            //Lottie.Forms.AnimationViewRender.Init();
 
             string fileName = "alo_db.db3";
             string folderPath = System.Environment.GetFolderPath(System.Environment.SpecialFolder.Personal);

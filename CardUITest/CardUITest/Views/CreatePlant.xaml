@@ -16,7 +16,11 @@
                 x:Name="saveButton"
                 Clicked="saveButton_Clicked"/>
 
+      
+
         <forms:AnimationView
+            
+            x:Name="AnimationView"
             HeightRequest="400"
             TranslationY="140"
             VerticalOptions="Start"

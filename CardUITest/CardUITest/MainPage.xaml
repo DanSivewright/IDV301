@@ -52,9 +52,9 @@
             HorizontalOptions="Start"
             VerticalOptions="Start">
             <lottie:AnimationView 
+                AutoPlay="False"
+                Loop="False" 
                 x:Name="menu_button"
-                AutoPlay="True"
-                Loop="True"
                 Scale="10"
                 WidthRequest="22"
                 HeightRequest="22"
@@ -65,16 +65,17 @@
             </lottie:AnimationView>
         </StackLayout>
         
-        <StackLayout
+        <!--Escape Button-->
+        <StackLayout 
             TranslationY="62"
-            TranslationX="0"
+            TranslationX="40"
             x:Name="plantViewEscape"
             HorizontalOptions="Start"
             VerticalOptions="Start">
             <lottie:AnimationView 
                 x:Name="escape_button"
-                AutoPlay="True"
-                Loop="True"
+                AutoPlay="False"
+                Loop="False"
                 Scale="10"
                 WidthRequest="22"
                 HeightRequest="22"

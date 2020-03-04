@@ -68,6 +68,7 @@ namespace CardUITest
             // Animate Title Back in
             AnimateTitle(CardState.Collapsed);
 
+            
         }
 
         private void AnimateTitle(CardState cardState)
@@ -75,7 +76,7 @@ namespace CardUITest
             var TitleTranslateY = cardState == CardState.Expanded ? 0 - (PlantHeader.Height + PlantHeader.Margin.Top) : 0;
             var MenuTranslateY = cardState == CardState.Expanded ? 0 : 62;
 
-            var escapeTranslateX = cardState == CardState.Collapsed ? 0 : 40;
+            var escapeTranslateX = cardState == CardState.Expanded ? 0 : -40;
             var escapeOpacity = cardState == CardState.Expanded ? 1 : 0;
 
             var Opacity = cardState == CardState.Expanded ? 0 : 1;

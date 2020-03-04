@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using SQLite;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using Lottie.Forms;
 
 namespace CardUITest.Views
 {
@@ -37,5 +38,12 @@ namespace CardUITest.Views
             await Navigation.PopModalAsync();
 
         }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+        }
+
+    
     }
 }

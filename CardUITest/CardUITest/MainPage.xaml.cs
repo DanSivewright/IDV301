@@ -66,6 +66,20 @@ namespace CardUITest
 
             // Animate Title Back in
             AnimateTitle(CardState.Collapsed);
+
+            if (MainCardView.IsUserInteractionEnabled)
+            {
+
+            }
+        }
+
+        private void AnimateMenu(CardState cardState)
+        {
+            if (true)
+            {
+
+            }
+            //var backgrounColor = cardState == CardState.Collapsed ? button_container.BackgroundColor = Xamarin.Forms.Color.White : button_container.BackgroundColor = Xamarin.Forms.Color.Orange;
         }
 
         private void AnimateTitle(CardState cardState)

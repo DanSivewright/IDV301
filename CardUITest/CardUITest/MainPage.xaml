@@ -32,6 +32,7 @@
             VerticalOptions="Start"
             Text="plants"
             Style="{ StaticResource TitleBar }"/>
+
         <Button
             x:Name="CreatePlant"
             Margin="0, 49, 40, 0"
@@ -41,19 +42,26 @@
             Style="{ StaticResource TitleBar}"
             Clicked="CreatePlant_Clicked"/>
 
-        <Image 
-            x:Name="menu_button"
-            WidthRequest="18"
-            HeightRequest="18"
-            Source="menu"
+        <Frame
+            Margin="40, 45, 0, 0"
+            Padding="20"
+            BackgroundColor="Orange"
+            x:Name="button_container"
             HorizontalOptions="Start"
-            VerticalOptions="Start"
-            Margin="40, 65, 0, 0">
+            VerticalOptions="Start">
+            <Image 
+                x:Name="menu_button"
+                WidthRequest="18"
+                HeightRequest="18"
+                Source="menu"
+                HorizontalOptions="Start"
+                VerticalOptions="Start">
 
-            <Image.GestureRecognizers>
-                <TapGestureRecognizer Tapped="BackMenu_Tapped"/>
-            </Image.GestureRecognizers>
-        </Image>
+                <Image.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="BackMenu_Tapped"/>
+                </Image.GestureRecognizers>
+            </Image>
+        </Frame>
     </Grid>
 
 </ContentPage>

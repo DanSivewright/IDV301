@@ -6,6 +6,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:cards="clr-namespace:PanCardView;assembly=PanCardView"
              xmlns:views="clr-namespace:CardUITest.Views"
+             xmlns:lottie="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
+             xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
              ios:Page.PreferredStatusBarUpdateAnimation="Fade"
              ios:Page.PrefersHomeIndicatorAutoHidden="true"
              ios:Page.PrefersStatusBarHidden="True"
@@ -42,27 +44,48 @@
             Style="{ StaticResource TitleBar}"
             Clicked="CreatePlant_Clicked"/>
 
-        <Frame
-            Margin="40, 45, 0, 0"
-            Padding="20"
+        <StackLayout
+            TranslationY="62"
+            Margin="40, 0, 0, 0"
+            x:Name="menu_container"
             BackgroundColor="Orange"
-            x:Name="button_container"
             HorizontalOptions="Start"
             VerticalOptions="Start">
-            <Image 
+            <lottie:AnimationView 
                 x:Name="menu_button"
-                WidthRequest="18"
-                HeightRequest="18"
-                Source="menu"
+                AutoPlay="True"
+                Loop="True"
+                Scale="10"
+                WidthRequest="22"
+                HeightRequest="22"
+                Animation="menu.json"
                 HorizontalOptions="Start"
-                VerticalOptions="Start">
-
-                <Image.GestureRecognizers>
-                    <TapGestureRecognizer Tapped="BackMenu_Tapped"/>
-                </Image.GestureRecognizers>
-            </Image>
-        </Frame>
+                VerticalOptions="Start"
+                OnClick="BackMenu_Tapped"> 
+            </lottie:AnimationView>
+        </StackLayout>
+        
+        <StackLayout
+            TranslationY="62"
+            TranslationX="0"
+            x:Name="plantViewEscape"
+            HorizontalOptions="Start"
+            VerticalOptions="Start">
+            <lottie:AnimationView 
+                x:Name="escape_button"
+                AutoPlay="True"
+                Loop="True"
+                Scale="10"
+                WidthRequest="22"
+                HeightRequest="22"
+                Animation="menu.json"
+                HorizontalOptions="Start"
+                VerticalOptions="Start"
+                OnClick="BackMenu_Tapped"> 
+            </lottie:AnimationView>
+        </StackLayout>
     </Grid>
+
 
 </ContentPage>
   

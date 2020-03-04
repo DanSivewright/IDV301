@@ -73,6 +73,7 @@
     <BundleResource Include="Resources\Montserrat-Thin.ttf" />
     <Compile Include="FontAssetHelper.ios.cs" />
     <BundleResource Include="Resources\plant-small.json" />
+    <BundleResource Include="Resources\menu.json" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\aloe_vera.png.imageset\Contents.json">

@@ -3,6 +3,7 @@ using CardUITest.ViewModels;
 using CardUITest.Views;
 using PanCardView;
 using PanCardView.EventArgs;
+using SkiaSharp;
 using SQLite;
 using System;
 using System.Collections.Generic;
@@ -67,37 +68,45 @@ namespace CardUITest
             // Animate Title Back in
             AnimateTitle(CardState.Collapsed);
 
-            if (MainCardView.IsUserInteractionEnabled)
-            {
-
-            }
-        }
-
-        private void AnimateMenu(CardState cardState)
-        {
-            if (true)
-            {
-
-            }
-            //var backgrounColor = cardState == CardState.Collapsed ? button_container.BackgroundColor = Xamarin.Forms.Color.White : button_container.BackgroundColor = Xamarin.Forms.Color.Orange;
         }
 
         private void AnimateTitle(CardState cardState)
         {
-            var translateY = cardState == CardState.Expanded ? 0 - (PlantHeader.Height + PlantHeader.Margin.Top) : 0;
-            var opacity = cardState == CardState.Expanded ? 0 : 1;
+            var TitleTranslateY = cardState == CardState.Expanded ? 0 - (PlantHeader.Height + PlantHeader.Margin.Top) : 0;
+            var MenuTranslateY = cardState == CardState.Expanded ? 0 : 62;
+
+            var escapeTranslateX = cardState == CardState.Collapsed ? 0 : 40;
+            var escapeOpacity = cardState == CardState.Expanded ? 1 : 0;
+
+            var Opacity = cardState == CardState.Expanded ? 0 : 1;
+      
 
             var animation = new Animation();
 
             if (cardState == CardState.Expanded)
             {
-                animation.Add(0.00, 0.25, new Animation(v => PlantHeader.TranslationY = v, PlantHeader.TranslationY, translateY));
-                animation.Add(0.00, 0.25, new Animation(v => PlantHeader.Opacity = v, PlantHeader.Opacity, opacity));
+                animation.Add(0.00, 0.25, new Animation(v => PlantHeader.TranslationY = v, PlantHeader.TranslationY, TitleTranslateY));
+                animation.Add(0.00, 0.25, new Animation(v => menu_container.TranslationY = v, menu_container.TranslationY, MenuTranslateY));
+
+
+                animation.Add(0.00, 0.25, new Animation(v => escape_button.TranslationX = v, escape_button.TranslationX, escapeTranslateX));
+                animation.Add(0.00, 0.25, new Animation(v => escape_button.Opacity = v, escape_button.Opacity, escapeOpacity));
+
+                animation.Add(0.00, 0.25, new Animation(v => PlantHeader.Opacity = v, PlantHeader.Opacity, Opacity));
+                animation.Add(0.00, 0.25, new Animation(v => menu_container.Opacity = v, menu_container.Opacity, Opacity));
             }
             else
             {
-                animation.Add(0.75, 1.0, new Animation(v => PlantHeader.TranslationY = v, PlantHeader.TranslationY, translateY));
-                animation.Add(0.75, 1.0, new Animation(v => PlantHeader.Opacity = v, PlantHeader.Opacity, opacity));
+                animation.Add(0.75, 1.0, new Animation(v => PlantHeader.TranslationY = v, PlantHeader.TranslationY, TitleTranslateY));
+                animation.Add(0.75, 1.0, new Animation(v => menu_container.TranslationY = v, menu_container.TranslationY, MenuTranslateY));
+
+
+                animation.Add(0.00, 0.25, new Animation(v => escape_button.TranslationX = v, escape_button.TranslationX, escapeTranslateX));
+                animation.Add(0.00, 0.25, new Animation(v => escape_button.Opacity = v, escape_button.Opacity, escapeOpacity));
+
+
+                animation.Add(0.75, 1.0, new Animation(v => PlantHeader.Opacity = v, PlantHeader.Opacity, Opacity));
+                animation.Add(0.75, 1.0, new Animation(v => menu_container.Opacity = v, menu_container.Opacity, Opacity));
             }
             animation.Commit(this, "titleAnimation", 16, 1000);
         }

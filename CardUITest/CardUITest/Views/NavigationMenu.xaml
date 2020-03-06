@@ -3,13 +3,26 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
              mc:Ignorable="d"
              x:Class="CardUITest.Views.NavigationMenu">
-    <ContentPage.Content>
-        <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+    <StackLayout>
+
+        <StackLayout Orientation="Vertical"
+                 HorizontalOptions="CenterAndExpand"
+                 VerticalOptions="CenterAndExpand">
+            <Label Text="Hello World"/>
+            <BoxView 
+            VerticalOptions="Start"
+            HorizontalOptions="Start"
+            WidthRequest="200"
+            HeightRequest="200"
+            BackgroundColor="CornflowerBlue">
+            </BoxView>
         </StackLayout>
-    </ContentPage.Content>
-</ContentPage>
+    </StackLayout>
+    
+
+
+    
+</ContentPage>  

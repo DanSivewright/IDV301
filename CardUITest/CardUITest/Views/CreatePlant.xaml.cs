@@ -44,6 +44,9 @@ namespace CardUITest.Views
             base.OnAppearing();
         }
 
-    
+        async private void backButton_Clicked(object sender, EventArgs e)
+        {
+            await Navigation.PopModalAsync();
+        }
     }
 }

@@ -22,7 +22,7 @@
             <cards:CardsView.ItemTemplate>
                 <DataTemplate>
                     <views:PlantCard
-                        Margin="0, 0, 0, -30"/>
+                        Margin="{OnPlatform iOS='0, 0, 0, -30', Default='0, 0, 0, -30'}"/>
                 </DataTemplate>
             </cards:CardsView.ItemTemplate>
         </cards:CardsView>
@@ -37,54 +37,45 @@
 
         <Button
             x:Name="CreatePlant"
-            Margin="0, 49, 40, 0"
+            Margin="{OnPlatform iOS='0, 49, 40, 0', Default='0, 0, 40, 0'}"
             HorizontalOptions="End"
             VerticalOptions="Start"
             Text="create"
             Style="{ StaticResource TitleBar}"
             Clicked="CreatePlant_Clicked"/>
 
-        <StackLayout
-            TranslationY="62"
-            Margin="40, 0, 0, 0"
-            x:Name="menu_container"
-            BackgroundColor="Orange"
-            HorizontalOptions="Start"
+
+        <!--Menu Button-->
+        <Image
+            TranslationY="{OnPlatform iOS=62, Default=12}"
+            Margin="{OnPlatform iOS='40, 0, 0, 0', Default='40, 0, 0, 0'}"
+            x:Name="menu_container" 
+            Source="menu"
+            WidthRequest="22"
+            HeightRequest="22"
+            HorizontalOptions="Start" 
             VerticalOptions="Start">
-            <lottie:AnimationView 
-                AutoPlay="False"
-                Loop="False" 
-                x:Name="menu_button"
-                Scale="10"
-                WidthRequest="22"
-                HeightRequest="22"
-                Animation="menu.json"
-                HorizontalOptions="Start"
-                VerticalOptions="Start"
-                OnClick="BackMenu_Tapped"> 
-            </lottie:AnimationView>
-        </StackLayout>
+            <Image.GestureRecognizers>
+                <TapGestureRecognizer Tapped="menu_container_OnClick" />
+            </Image.GestureRecognizers>
+        </Image>
+
         
         <!--Escape Button-->
-        <StackLayout 
-            TranslationY="62"
-            TranslationX="40"
-            x:Name="plantViewEscape"
-            HorizontalOptions="Start"
-            VerticalOptions="Start">
-            <lottie:AnimationView 
-                x:Name="escape_button"
-                AutoPlay="False"
-                Loop="False"
-                Scale="10"
-                WidthRequest="22"
-                HeightRequest="22"
-                Animation="menu.json"
-                HorizontalOptions="Start"
-                VerticalOptions="Start"
-                OnClick="BackMenu_Tapped"> 
-            </lottie:AnimationView>
-        </StackLayout>
+        <lottie:AnimationView
+            TranslationY="{OnPlatform iOS=62, Default=12}"
+            Margin="{OnPlatform iOS='40, 0, 0, 0', Default='40, 0, 0, 0'}"
+            x:Name="escape_button" 
+            Animation="menu.json"
+            WidthRequest="22"
+            HeightRequest="22"
+            Scale="10"
+            HorizontalOptions="Start" 
+            VerticalOptions="Start"
+            OnClick="BackMenu_Tapped"
+            >
+
+        </lottie:AnimationView>
     </Grid>
 
 

@@ -16,7 +16,11 @@
                 x:Name="saveButton"
                 Clicked="saveButton_Clicked"/>
 
-      
+        <Button
+            Text="Back Button"
+            x:Name="backButton"
+            Clicked="backButton_Clicked"/>
+
 
         <forms:AnimationView
             

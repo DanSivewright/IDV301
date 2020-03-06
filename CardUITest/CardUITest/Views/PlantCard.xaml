@@ -19,7 +19,7 @@
             x:Name="PlantImage"
             HeightRequest="400"
             Source="{Binding Image}"
-            TranslationY="180"
+            TranslationY="{OnPlatform iOS=180, Android=80}"
             VerticalOptions="Start"
             WidthRequest="400" />
 

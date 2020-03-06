@@ -94,7 +94,7 @@ namespace CardUITest
                 animation.Add(0.00, 0.25, new Animation(v => escape_button.Opacity = v, escape_button.Opacity, escapeOpacity));
 
                 animation.Add(0.00, 0.25, new Animation(v => PlantHeader.Opacity = v, PlantHeader.Opacity, Opacity));
-                animation.Add(0.00, 0.25, new Animation(v => menu_container.Opacity = v, menu_container.Opacity, Opacity));
+                animation.Add(0.00, 0.15, new Animation(v => menu_container.Opacity = v, menu_container.Opacity, Opacity));
             }
             else
             {
@@ -189,6 +189,19 @@ namespace CardUITest
         async private void CreatePlant_Clicked(object sender, EventArgs e)
         {
             await Navigation.PushModalAsync(new CreatePlant());
+        }
+
+        async private void menu_container_OnClick(object sender, EventArgs e)
+        {
+            //menu_container.Source = "";
+            //menu_container.ScaleTo(45, 1000, Easing.SpringOut);
+            //menu_container.BackgroundColor = Xamarin.Forms.Color.Orange;
+            animateMenu(CardState.Collapsed);
+        }
+
+        async private void animateMenu(CardState cardState)
+        {
+            await Navigation.PushModalAsync(new NavigationMenu());
         }
     }
 }

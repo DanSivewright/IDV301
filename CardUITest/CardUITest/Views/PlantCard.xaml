@@ -34,8 +34,61 @@
             <Label.GestureRecognizers>
                 <TapGestureRecognizer Tapped="ManagePlant_Tapped"/>
             </Label.GestureRecognizers>
-
         </Label>
+
+        <Grid 
+            Margin="0, 0, 0, 60"
+            x:Name="PlantDetailContainer"
+            InputTransparent="True">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="600"/>
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <ScrollView 
+                x:Name="PlantDetails"
+                Grid.Row="1" 
+                Margin="40, 0, 40, 0"
+                Orientation="Vertical"
+                Opacity="0"
+                VerticalOptions="Start">
+                <StackLayout>
+                    <Label
+                    Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+                    />
+
+                    <BoxView
+                        Margin="0, 20, 0, 20"
+                        HeightRequest="1"
+                        VerticalOptions="Start"
+                        Color="#eaeaea"/>
+
+                    <Label
+                    Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+                    />
+
+                    <BoxView
+                        Margin="0, 20, 0, 20"
+                        HeightRequest="1"
+                        VerticalOptions="Start"
+                        Color="#eaeaea"/>
+
+                    <Label
+                    Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+                    />
+
+                    <BoxView
+                        Margin="0, 20, 0, 20"
+                        HeightRequest="1"
+                        VerticalOptions="Start"
+                        Color="#eaeaea"/>
+
+                    <Label
+                    Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+                    />
+
+                </StackLayout>
+            </ScrollView>
+        </Grid>
 
 
     </Grid>

@@ -18,33 +18,25 @@ namespace CardUITest.Views
             InitializeComponent();
         }
 
-        //SKPaint circleColor = new SKPaint
-        //{
-        //    Style = SKPaintStyle.Fill,
-        //    Color = SKColors.CornflowerBlue
-        //};
-
         protected override void OnAppearing()
         {
             base.OnAppearing();
+            navBackground.ScaleTo(100, 2000, Easing.SpringOut);
         }
 
+        async void allPlants_Clicked(System.Object sender, System.EventArgs e)
+        {
+            await Navigation.PopModalAsync();
+        }
 
+        async void createPlants_Clicked(System.Object sender, System.EventArgs e)
+        {
+            await Navigation.PushModalAsync(new CreatePlant());
+        }
 
-        //private void canvasView_PaintSurface(object sender, SkiaSharp.Views.Forms.SKPaintSurfaceEventArgs e)
-        //{
-        //    SKSurface surface = e.Surface;
-        //    SKCanvas canvas = surface.Canvas;
-
-        //    canvas.Clear();
-
-        //    int height = e.Info.Height;
-        //    int width = e.Info.Width;
-
-        //    canvas.Translate(120, 150);
-        //    canvas.Scale(30);
-
-        //    canvas.DrawCircle(0, 0, 20, circleColor);
-        //}
+        async void navItem_Clicked(System.Object sender, System.EventArgs e)
+        {
+            await Navigation.PushModalAsync(new ProfilePage());
+        }
     }
 }

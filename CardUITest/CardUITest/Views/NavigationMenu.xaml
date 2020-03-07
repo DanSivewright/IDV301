@@ -6,23 +6,48 @@
              xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
              mc:Ignorable="d"
              x:Class="CardUITest.Views.NavigationMenu">
-    <StackLayout>
 
-        <StackLayout Orientation="Vertical"
-                 HorizontalOptions="CenterAndExpand"
-                 VerticalOptions="CenterAndExpand">
-            <Label Text="Hello World"/>
-            <BoxView 
-            VerticalOptions="Start"
-            HorizontalOptions="Start"
-            WidthRequest="200"
-            HeightRequest="200"
-            BackgroundColor="CornflowerBlue">
-            </BoxView>
-        </StackLayout>
-    </StackLayout>
-    
+    <AbsoluteLayout VerticalOptions="FillAndExpand">
+        <BoxView
+            x:Name="navBackground"
+            BackgroundColor="CornflowerBlue"
+            CornerRadius="12" 
+            AbsoluteLayout.LayoutBounds="40, 62, 24, 24"/>
 
+        <FlexLayout
+            x:Name="navContainer"
+            AbsoluteLayout.LayoutBounds="0.5, 0.5, 200, 200"
+            AbsoluteLayout.LayoutFlags="PositionProportional"
+            Direction="Column"
+            AlignItems="Center"
+            JustifyContent="SpaceEvenly">
 
-    
+            <Button
+                Text="All Plants"
+                x:Name="allPlants"
+                VerticalOptions="Center"
+                Style="{ d:StaticResource SubHeader}"  
+                HorizontalOptions="Start"
+                Clicked="allPlants_Clicked"
+                />
+            <Button
+                Text="Create Plants"
+                x:Name="createPlants"
+                VerticalOptions="Center"
+                Style="{ d:StaticResource SubHeader}"  
+                HorizontalOptions="Start"
+                Clicked="createPlants_Clicked"/>
+
+            <Button
+                Text="Profile"
+                x:Name="navItem"
+                VerticalOptions="Center"
+                Style="{ d:StaticResource SubHeader}"  
+                HorizontalOptions="Start"
+                Clicked="navItem_Clicked"/>
+            
+
+        </FlexLayout>
+        
+    </AbsoluteLayout> 
 </ContentPage>  

@@ -186,11 +186,6 @@ namespace CardUITest
             nextCard.MainImage.TranslationY = LimitToRange(offset, _plantImageTranslationY, _plantImageTranslationY + _movementFactor);
         }
 
-        async private void CreatePlant_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PushModalAsync(new CreatePlant());
-        }
-
         async private void menu_container_OnClick(object sender, EventArgs e)
         {
             //menu_container.Source = "";

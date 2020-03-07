@@ -28,7 +28,7 @@
                 VerticalOptions="Center"
                 Style="{ d:StaticResource SubHeader}"  
                 HorizontalOptions="Start"
-                Clicked="allPlants_Clicked"
+                Clicked="allPlants_Clicked" 
                 />
             <Button
                 Text="Create Plants"

@@ -195,6 +195,7 @@ namespace CardUITest.Views
             AnimateTransition(cardState);
 
             _cardState = cardState;
+            PlantDetailContainer.InputTransparent = _cardState == CardState.Collapsed;
         }
 
         private void AnimateTransition(CardState cardState)
@@ -209,6 +210,13 @@ namespace CardUITest.Views
                 parentAnimation.Add(0.15, 0.50, CreatePlantTypeAnimation(cardState));
                 parentAnimation.Add(0.00, 0.25, CreateManageAnimation(cardState));
                 parentAnimation.Add(0.50, 0.75, CreateGradientAnimation(cardState));
+
+                // Animating in the plant details section
+                parentAnimation.Add(0.60, 0.85, new Animation((v) => PlantDetails.TranslationY = v, 
+                    200, 0, Easing.SpringOut));
+                parentAnimation.Add(0.60, 0.85, new Animation((v) => PlantDetails.Opacity = v, 
+                    0, 1, Easing.Linear));
+
             }
             else
             {
@@ -218,6 +226,11 @@ namespace CardUITest.Views
                 parentAnimation.Add(0.25, 0.50, CreatePlantTypeAnimation(cardState));
                 parentAnimation.Add(0.35, 0.45, CreateManageAnimation(cardState));
                 parentAnimation.Add(0.00, 0.25, CreateGradientAnimation(cardState));
+
+                parentAnimation.Add(0.00, 0.25, new Animation((v) => PlantDetails.TranslationY = v,
+                    0, 200, Easing.SpringIn));
+                parentAnimation.Add(0.00, 0.25, new Animation((v) => PlantDetails.Opacity = v,
+                    1, 0, Easing.Linear));
             }
             parentAnimation.Commit(this, "CardExpand", 16, 2000);
         }

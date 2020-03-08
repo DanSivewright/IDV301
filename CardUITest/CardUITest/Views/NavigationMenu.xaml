@@ -10,7 +10,7 @@
     <AbsoluteLayout VerticalOptions="FillAndExpand">
         <BoxView
             x:Name="navBackground"
-            BackgroundColor="CornflowerBlue"
+            BackgroundColor="#3e503c"
             CornerRadius="12" 
             AbsoluteLayout.LayoutBounds="40, 62, 24, 24"/>
 
@@ -26,15 +26,15 @@
                 Text="All Plants"
                 x:Name="allPlants"
                 VerticalOptions="Center"
-                Style="{ d:StaticResource SubHeader}"  
+                Style="{ d:StaticResource MenuItem}"  
                 HorizontalOptions="Start"
-                Clicked="allPlants_Clicked" 
+                Clicked="allPlants_Clicked"
                 />
             <Button
                 Text="Create Plants"
                 x:Name="createPlants"
                 VerticalOptions="Center"
-                Style="{ d:StaticResource SubHeader}"  
+                Style="{ d:StaticResource MenuItem}"  
                 HorizontalOptions="Start"
                 Clicked="createPlants_Clicked"/>
 
@@ -42,11 +42,11 @@
                 Text="Profile"
                 x:Name="navItem"
                 VerticalOptions="Center"
-                Style="{ d:StaticResource SubHeader}"  
+                Style="{ d:StaticResource MenuItem}"  
                 HorizontalOptions="Start"
                 Clicked="navItem_Clicked"/>
             
-
+             
         </FlexLayout>
         
     </AbsoluteLayout> 

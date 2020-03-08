@@ -22,6 +22,12 @@
             <Setter Property="TextColor" Value="White"/>
         </Style>
 
+        <Style x:Key="MenuItem" TargetType="Label">
+            <Setter Property="FontFamily" Value="{StaticResource HeaderFont}"/>
+            <Setter Property="FontSize" Value="28"/>
+            <Setter Property="TextColor" Value="White"/>
+        </Style>
+
         <Style x:Key="SubHeader" TargetType="Label">
             <Setter Property="FontFamily" Value="{StaticResource HeaderFont }"/>
             <Setter Property="FontSize" Value="24"/>

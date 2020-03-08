@@ -291,8 +291,8 @@ namespace CardUITest.Views
 
         private Animation CreatePlantTypeAnimation(CardState cardState)
         {
-            var typeAnimStart = cardState == CardState.Expanded ? 0 : -120;
-            var typeAnimEnd = cardState == CardState.Expanded ? -120 : 0;
+            var typeAnimStart = cardState == CardState.Expanded ? 0 : -490;
+            var typeAnimEnd = cardState == CardState.Expanded ? -490 : 0;
 
             var imageAnim = new Animation(
                 v =>
@@ -309,8 +309,8 @@ namespace CardUITest.Views
 
         private Animation CreatePlantNameAnimation(CardState cardState)
         {
-            var nameAnimStart = cardState == CardState.Expanded ? 0 : -120;
-            var nameAnimEnd = cardState == CardState.Expanded ? -120 : 0;
+            var nameAnimStart = cardState == CardState.Expanded ? 0 : -490;
+            var nameAnimEnd = cardState == CardState.Expanded ? -490 : 0;
 
             var imageAnim = new Animation(
                 v =>

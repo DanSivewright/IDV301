@@ -24,6 +24,14 @@
             WidthRequest="400" />
 
         <Label 
+                Text="{Binding PlantType}"
+                x:Name="PlantType"
+                Margin="40,667,0,0"
+                Style="{StaticResource SubHeader}"
+                HorizontalOptions="Start"
+                VerticalOptions="Start"/>
+
+        <Label 
             x:Name="ManagePlantLabel"
             Text="manage plant ⟶"
             Style="{StaticResource LearnMore}"
@@ -41,7 +49,7 @@
             x:Name="PlantDetailContainer"
             InputTransparent="True">
             <Grid.RowDefinitions>
-                <RowDefinition Height="600"/>
+                <RowDefinition Height="220"/>
                 <RowDefinition Height="*" />
             </Grid.RowDefinitions>
             <ScrollView 

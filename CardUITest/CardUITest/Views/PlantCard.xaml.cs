@@ -37,10 +37,6 @@ namespace CardUITest.Views
         private SKPaint _plantNamePaint;
         private float _plantNamePosY;
         private float _plantNamePosX;
-        private SKPaint _plantTypePaint;
-        private float _plantTypePosY;
-
-        private float _plantTypeOffsetY;
         private float _plantNameOffsetY;
 
         public PlantCard()
@@ -83,15 +79,6 @@ namespace CardUITest.Views
 
             _plantNamePosY = 640f * _density;
             _plantNamePosX = 40f * _density;
-
-            _plantTypePaint = new SKPaint()
-            {
-                Typeface = _typeface,
-                IsAntialias = true,
-                Color = SKColors.White,
-                TextSize = 25 * _density
-            };
-            _plantTypePosY = 690f * _density;
 
             // Setup initial values
             _cardTopAnimPosition = _cardTopMargin;
@@ -142,18 +129,6 @@ namespace CardUITest.Views
             canvas.DrawRect(bottomRect, new SKPaint() { Color = SKColors.White });
 
             DrawPlantName(canvas);
-            DrawPlantType(canvas);
-
-        }
-
-        private void DrawPlantType(SKCanvas canvas)
-        {
-            var textPos = new SKPoint(_plantNamePosX, _plantTypePosY + _plantTypeOffsetY);
-
-            // apply the gradient shader
-            _plantTypePaint.Shader = GetGradientShader(SKColors.White, SKColors.Black);
-
-            canvas.DrawText(_viewModel.PlantType, textPos, _plantTypePaint);
         }
 
         private void DrawPlantName(SKCanvas canvas)
@@ -205,11 +180,15 @@ namespace CardUITest.Views
             if (cardState == CardState.Expanded)
             {
                 parentAnimation.Add(0.00, 0.10, CreateCardAnimation(cardState));
-                parentAnimation.Add(0.00, 0.50, CreateImageAnimation(cardState));
+                //parentAnimation.Add(0.00, 0.50, CreateImageAnimation(cardState));
                 parentAnimation.Add(0.10, 0.50, CreatePlantNameAnimation(cardState));
                 parentAnimation.Add(0.15, 0.50, CreatePlantTypeAnimation(cardState));
                 parentAnimation.Add(0.00, 0.25, CreateManageAnimation(cardState));
                 parentAnimation.Add(0.50, 0.75, CreateGradientAnimation(cardState));
+
+                // Image Animation
+                parentAnimation.Add(0.00, 0.50, new Animation((v) => PlantImage.TranslationY = v, PlantImage.TranslationY, 60, Easing.SpringOut));
+                parentAnimation.Add(0.00, 0.10, new Animation((v) => PlantImage.Opacity = v, 1, 0, Easing.Linear));
 
                 // Animating in the plant details section
                 parentAnimation.Add(0.60, 0.85, new Animation((v) => PlantDetails.TranslationY = v, 
@@ -220,12 +199,16 @@ namespace CardUITest.Views
             }
             else
             {
-                parentAnimation.Add(0.25, 0.45, CreateImageAnimation(cardState));
+                //parentAnimation.Add(0.25, 0.45, CreateImageAnimation(cardState));
                 parentAnimation.Add(0.25, 0.45, CreateCardAnimation(cardState));
                 parentAnimation.Add(0.25, 0.50, CreatePlantNameAnimation(cardState));
                 parentAnimation.Add(0.25, 0.50, CreatePlantTypeAnimation(cardState));
-                parentAnimation.Add(0.35, 0.45, CreateManageAnimation(cardState));
+                parentAnimation.Add(0.45, 0.50, CreateManageAnimation(cardState));
                 parentAnimation.Add(0.00, 0.25, CreateGradientAnimation(cardState));
+
+                // Image Animation
+                parentAnimation.Add(0.25, 0.45, new Animation((v) => PlantImage.TranslationY = v, 60, 180, Easing.SpringOut));
+                parentAnimation.Add(0.25, 0.45, new Animation((v) => PlantImage.Opacity = v, 0, 1, Easing.Linear));
 
                 parentAnimation.Add(0.00, 0.25, new Animation((v) => PlantDetails.TranslationY = v,
                     0, 200, Easing.SpringIn));
@@ -292,13 +275,13 @@ namespace CardUITest.Views
         private Animation CreatePlantTypeAnimation(CardState cardState)
         {
             var typeAnimStart = cardState == CardState.Expanded ? 0 : -490;
-            var typeAnimEnd = cardState == CardState.Expanded ? -490 : 0;
+            var typeAnimEnd = cardState == CardState.Expanded ? -100 : 0;
 
             var imageAnim = new Animation(
                 v =>
                 {
-                    _plantTypeOffsetY = (float)v * _density;
-                    CardBackground.InvalidateSurface();
+                    PlantType.TranslationY = v;
+                    PlantType.Opacity = 1 - ((-1 * v) / 100);
                 },
                 typeAnimStart,
                 typeAnimEnd,
@@ -325,23 +308,23 @@ namespace CardUITest.Views
             return imageAnim;
         }
 
-        private Animation CreateImageAnimation(CardState cardState)
-        {
-            // work out where the top of the card should be
-            var imageAnimStart = cardState == CardState.Expanded ? PlantImage.TranslationY : 60;
-            var imageAnimEnd = cardState == CardState.Expanded ? 60 : 180;
+        //private Animation CreateImageAnimation(CardState cardState)
+        //{
+        //    // work out where the top of the card should be
+        //    var imageAnimStart = cardState == CardState.Expanded ? PlantImage.TranslationY : 60;
+        //    var imageAnimEnd = cardState == CardState.Expanded ? 60 : 180;
 
-            var imageAnim = new Animation(
-                v =>
-                {
-                    PlantImage.TranslationY = v;
-                },
-                imageAnimStart,
-                imageAnimEnd,
-                Easing.SpringOut
-                );
-            return imageAnim;
-        }
+        //    var imageAnim = new Animation(
+        //        v =>
+        //        {
+        //            PlantImage.TranslationY = v;
+        //        },
+        //        imageAnimStart,
+        //        imageAnimEnd,
+        //        Easing.SpringOut
+        //        );
+        //    return imageAnim;
+        //}
 
         private Animation CreateCardAnimation(CardState cardState)
         {

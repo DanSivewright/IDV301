@@ -82,8 +82,8 @@
                     </Grid.RowDefinitions>
 
                     <StackLayout
-                        VerticalOptions="Center">
-
+                        VerticalOptions="Center"
+                        Margin="0, 0, 14, 0">
                         <Label
                             Margin="0, 30, 0, 0"
                             FontSize="16"
@@ -98,7 +98,7 @@
                     </StackLayout>
                     <!-- Dividing Line -->
                     <BoxView
-                        Margin="0,0,14,0"
+                        
                         HeightRequest=".5"
                         VerticalOptions="End"
                         Color="WhiteSmoke" />
@@ -109,13 +109,12 @@
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
 
-                        <StackLayout Margin="14,0,0,0" VerticalOptions="Center">
+                        <StackLayout VerticalOptions="Center">
                             <StackLayout Orientation="Horizontal">
-                                <Image BackgroundColor="Orange" Source="flower-icon" WidthRequest="15" HeightRequest="15"/>
-                                <Label FontSize="12" TextColor="Black" Style="{StaticResource SubHeader}" Text="65%" />
+                                <Image Margin="0, 0, 8, 0" BackgroundColor="Orange" Source="{ Binding PlantImage}" WidthRequest="15" HeightRequest="15"/>
+                                <Label FontSize="16" TextColor="Black" Style="{StaticResource SubHeader}" Text="65%" />
                             </StackLayout>
                             <Label
-                                Margin="0,0,0,0"
                                 Style="{ StaticResource LearnMore}"
                                 Text="Plant Health"
                                 FontSize="12"
@@ -130,7 +129,7 @@
             Grid.RowSpan="2"
             Margin="38, 100, 0, 0"
             Aspect="AspectFill"
-            HeightRequest="200"
+            HeightRequest="220"
             HorizontalOptions="Start"
             Source="aquilegia.png"
             VerticalOptions="Start"

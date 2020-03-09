@@ -14,14 +14,14 @@ namespace CardUITest
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new MyPage();
         }
         
         public App(string filePath)
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new MyPage();
 
             FilePath = filePath;
         }

@@ -170,7 +170,7 @@ namespace CardUITest.Views
             AnimateTransition(cardState);
 
             _cardState = cardState;
-            PlantDetailContainer.InputTransparent = _cardState == CardState.Collapsed;
+            PlantDetails.InputTransparent = _cardState == CardState.Collapsed;
         }
 
         private void AnimateTransition(CardState cardState)

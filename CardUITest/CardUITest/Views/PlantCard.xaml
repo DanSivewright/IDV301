@@ -4,7 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms"
-             xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms" 
+             xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
              mc:Ignorable="d"
              x:Class="CardUITest.Views.PlantCard">
     <Grid>
@@ -44,60 +44,65 @@
             </Label.GestureRecognizers>
         </Label>
 
-        <Grid 
-            Margin="0, 0, 0, 60"
-            x:Name="PlantDetailContainer"
+        <Grid
+            Margin="0, 80, 0, 60"
+            x:Name="PlantDetails"
             InputTransparent="True">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="220"/>
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
-            <ScrollView 
-                x:Name="PlantDetails"
-                Grid.Row="1" 
-                Margin="40, 0, 40, 0"
-                Orientation="Vertical"
-                Opacity="0"
-                VerticalOptions="Start">
-                <StackLayout>
-                    <Label
-                    Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-                    />
+            <Grid
+                Margin="30, 172, 30, 0">
 
-                    <BoxView
-                        Margin="0, 20, 0, 20"
-                        HeightRequest="1"
-                        VerticalOptions="Start"
-                        Color="#eaeaea"/>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="138"/>
+                    <RowDefinition Height="46"/>
+                    <RowDefinition Height="46"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="150"/>
+                    <ColumnDefinition Width="*"/> 
+                </Grid.ColumnDefinitions>
 
-                    <Label
-                    Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-                    />
+                <BoxView
+                    Grid.Row="0"
+                    Grid.ColumnSpan="2"
+                    BackgroundColor="White"
+                    CornerRadius="6, 6, 0, 0"/>
 
-                    <BoxView
-                        Margin="0, 20, 0, 20"
-                        HeightRequest="1"
-                        VerticalOptions="Start"
-                        Color="#eaeaea"/>
+                <BoxView
+                    Grid.Row="1"
+                    Grid.ColumnSpan="2 "
+                    BackgroundColor="{Binding PlantColor}"
+                    CornerRadius="0, 0, 6, 6"/>
 
-                    <Label
-                    Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-                    />
+                <Grid Grid.Row="0" Grid.Column="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
 
-                    <BoxView
-                        Margin="0, 20, 0, 20"
-                        HeightRequest="1"
-                        VerticalOptions="Start"
-                        Color="#eaeaea"/>
+                    <StackLayout
+                        Margin="14, 0, 0, 0"
+                        VerticalOptions="Center">
 
-                    <Label
-                    Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
-                    />
+                        <Label
+                            Text="{ Binding PlantName }"
+                            Style="{ StaticResource SubHeader}"
+                            TextColor="Black"/>
 
-                </StackLayout>
-            </ScrollView>
+                    </StackLayout>
+
+                </Grid> 
         </Grid>
 
-
+        <Image
+            Grid.RowSpan="2"
+            Margin="38, 100, 0, 0"
+            Aspect="AspectFill"
+            HeightRequest="200"
+            HorizontalOptions="Start"
+            Source="aquilegia.png"
+            VerticalOptions="Start"
+            WidthRequest="125"/>
+        </Grid>
     </Grid>
 </ContentView>

@@ -1,6 +1,60 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:skia="clr-namespace:SkiaSharp.Views.Forms;assembly=SkiaSharp.Views.Forms" x:Class="CardUITest.Views.MyPage">
-    <ContentPage.Content>
-        
-    </ContentPage.Content>
+
+        <Grid>
+            <Grid
+                Margin="14, 172, 14, 0">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="138"/>
+                    <RowDefinition Height="46"/>
+                    <RowDefinition Height="46"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="150"/>
+                    <ColumnDefinition Width="*"/> 
+                </Grid.ColumnDefinitions>
+
+                <BoxView
+                    Grid.Row="0"
+                    Grid.ColumnSpan="2"
+                    BackgroundColor="Orange"
+                    CornerRadius="6, 6, 0, 0"/>
+
+                <BoxView
+                    Grid.Row="1"
+                    Grid.ColumnSpan="2 "
+                    BackgroundColor="LightPink"
+                    CornerRadius="0, 0, 6, 6"/>
+
+                <Grid Grid.Row="0" Grid.Column="1">
+
+                    <Grid.RowDefinitions Height="*"/>
+                    <Grid.RowDefinitions Height="*"/>
+
+                    <StackLayout
+                        Margin="14, 0, 0, 0"
+                        VerticalOptions="Center">
+
+                        <Label
+                            Text="Plant Name"
+                            Style="{ StaticResource SubHeader}"
+                            TextColor="Black"/>
+
+                    </StackLayout>
+
+                </Grid> 
+        </Grid>
+
+        <Image
+            Grid.RowSpan="2"
+            Margin="28, 100, 0, 0"
+            Aspect="AspectFill"
+            HeightRequest="200"
+            HorizontalOptions="Start"
+            Source="aquilegia.png"
+            VerticalOptions="Start"
+            WidthRequest="125"/>
+        </Grid>
 </ContentPage>

@@ -91,6 +91,12 @@
     <ImageAsset Include="Assets.xcassets\aquilegia.png.imageset\Layer 1@3x.png">
       <Visible>false</Visible>
     </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\flower-icon.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\flower-icon.imageset\leaf.png">
+      <Visible>false</Visible>
+    </ImageAsset>
     <ImageAsset Include="Assets.xcassets\menu.imageset\Contents.json">
       <Visible>false</Visible>
     </ImageAsset>

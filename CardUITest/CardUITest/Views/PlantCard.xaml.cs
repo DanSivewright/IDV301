@@ -126,7 +126,7 @@ namespace CardUITest.Views
             // draw the white bit
             SKRect bottomRect = new SKRect(0, _gradientTransitionY + _gradientHeight,
                 info.Width, info.Height);
-            canvas.DrawRect(bottomRect, new SKPaint() { Color = SKColors.White });
+            canvas.DrawRect(bottomRect, new SKPaint() { Color = new SKColor(246, 247, 250) });
 
             DrawPlantName(canvas);
         }

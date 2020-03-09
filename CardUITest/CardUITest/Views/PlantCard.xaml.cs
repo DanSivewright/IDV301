@@ -95,6 +95,8 @@ namespace CardUITest.Views
             }
         }
 
+       
+
         private void CardBackground_PaintSurface(object sender, SkiaSharp.Views.Forms.SKPaintSurfaceEventArgs args)
         {
             // seems that PaintSurface is called before the 
@@ -308,24 +310,6 @@ namespace CardUITest.Views
             return imageAnim;
         }
 
-        //private Animation CreateImageAnimation(CardState cardState)
-        //{
-        //    // work out where the top of the card should be
-        //    var imageAnimStart = cardState == CardState.Expanded ? PlantImage.TranslationY : 60;
-        //    var imageAnimEnd = cardState == CardState.Expanded ? 60 : 180;
-
-        //    var imageAnim = new Animation(
-        //        v =>
-        //        {
-        //            PlantImage.TranslationY = v;
-        //        },
-        //        imageAnimStart,
-        //        imageAnimEnd,
-        //        Easing.SpringOut
-        //        );
-        //    return imageAnim;
-        //}
-
         private Animation CreateCardAnimation(CardState cardState)
         {
             // work out where the top of the card should be
@@ -344,6 +328,36 @@ namespace CardUITest.Views
                 Easing.SinInOut
                 );
             return cardAnim;
+        }
+
+        private void SKCanvasView_PaintSurface(object sender, SKPaintSurfaceEventArgs e)
+        {
+            SKImageInfo info = e.Info;
+            SKSurface surface = e.Surface;
+            SKCanvas canvas = surface.Canvas;
+
+            canvas.Clear();
+
+            using (SKPaint paint = new SKPaint())
+            {
+                SKColor shadowColor = Color.FromHex(_viewModel.PlantColor).ToSKColor();
+
+                paint.IsDither = true;
+                paint.IsAntialias = true;
+                paint.Color = shadowColor;
+
+
+                paint.ImageFilter = SKImageFilter.CreateDropShadow(
+                    dx: 0, dy: 0,
+                    sigmaX: 40, sigmaY: 40,
+                    color: shadowColor,
+                    shadowMode: SKDropShadowImageFilterShadowMode.DrawShadowOnly);
+
+                var margin = info.Width / 10;
+                var shadowBounds = new SKRect(margin, -40, info.Width - margin, 10);
+                canvas.DrawRoundRect(shadowBounds, 10, 10, paint);
+
+            }
         }
     }
 }

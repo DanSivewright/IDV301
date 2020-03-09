@@ -74,6 +74,23 @@
                     Grid.ColumnSpan="2 "
                     BackgroundColor="{Binding PlantColor}"
                     CornerRadius="0, 0, 6, 6"/>
+                
+                <!-- Button Text-->
+                <Label
+                    Grid.Row="1"
+                    Grid.ColumnSpan="2"
+                    HorizontalOptions="Center"
+                    Style="{StaticResource SubHeader}"
+                    FontSize="14"
+                    Text="EDIT YOUR PLANT"
+                    TextColor="White"
+                    VerticalOptions="Center"/>
+
+                    <skia:SKCanvasView
+                        Grid.Row="2"
+                        Grid.RowSpan="2"
+                        Grid.ColumnSpan="2"
+                        PaintSurface="SKCanvasView_PaintSurface" />
 
                 <Grid Grid.Row="0" Grid.Column="1">
                     <Grid.RowDefinitions>
@@ -86,7 +103,7 @@
                         Margin="0, 0, 14, 0">
                         <Label
                             Margin="0, 30, 0, 0"
-                            FontSize="16"
+                            FontSize="18"
                             Text="{ Binding PlantName }"
                             Style="{ StaticResource SubHeader}"
                             TextColor="Black"/>
@@ -96,9 +113,10 @@
                             Style="{ StaticResource LearnMore}"
                             TextColor="LightGray"/>
                     </StackLayout>
+                    
+                    
                     <!-- Dividing Line -->
                     <BoxView
-                        
                         HeightRequest=".5"
                         VerticalOptions="End"
                         Color="WhiteSmoke" />
@@ -110,15 +128,29 @@
                         </Grid.ColumnDefinitions>
 
                         <StackLayout VerticalOptions="Center">
-                            <StackLayout Orientation="Horizontal">
-                                <Image Margin="0, 0, 8, 0" BackgroundColor="Orange" Source="{ Binding PlantImage}" WidthRequest="15" HeightRequest="15"/>
-                                <Label FontSize="16" TextColor="Black" Style="{StaticResource SubHeader}" Text="65%" />
+                            <StackLayout 
+                                Orientation="Horizontal"
+                                Margin="0, 0, 0, 2">
+                                <Image 
+                                    Source="flower-icon"
+                                    Margin="0, 0, 8, 0"
+                                    WidthRequest="15" 
+                                    HeightRequest="15"/>
+                                
+                                <!-- Plant Health Percentage -->
+                                <Label 
+                                    FontSize="16" 
+                                    TextColor="Black" 
+                                    Style="{StaticResource SubHeader}" 
+                                    Text="65%"/>
                             </StackLayout>
+
+                            <!-- Plant Health Label-->
                             <Label
                                 Style="{ StaticResource LearnMore}"
                                 Text="Plant Health"
                                 FontSize="12"
-                                TextColor="Black"/>
+                                TextColor="LightGray"/>
                         </StackLayout>
                     </Grid>
                     

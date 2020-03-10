@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="CardUITest.Views.PlantDetailsSection">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Label
+                x:Name="DetailsTab"
+                Grid.Column="0"
+                HorizontalTextAlignment="Center"
+                Style="{StaticResource LearnMore}"
+                FontSize="15"
+                TextColor="LightGray"
+                Text="Info">
+                <!--<Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                </Label.GestureRecognizers>-->
+            </Label>
+            <Label
+                x:Name="ManageTab"
+                HorizontalTextAlignment="Center"
+                Grid.Column="1"
+                Style="{StaticResource LearnMore}"
+                FontSize="15"
+                TextColor="LightGray"
+                Text="Info">
+                <!--<Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                </Label.GestureRecognizers>-->
+            </Label>
+            <Label
+                HorizontalTextAlignment="Center"
+                x:Name="EditTab"
+                Grid.Column="2"
+                Style="{StaticResource LearnMore}"
+                FontSize="15"
+                TextColor="LightGray"
+                Text="Info">
+                <!--<Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                </Label.GestureRecognizers>-->
+            </Label>
+        </Grid>
+        
+    </Grid>
+    
+</ContentView>

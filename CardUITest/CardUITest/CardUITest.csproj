@@ -33,6 +33,9 @@
     <EmbeddedResource Update="Views\PlantCard.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+    <EmbeddedResource Update="Views\PlantDetailsSection.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="MainPage %28copy%29.xaml.cs" />

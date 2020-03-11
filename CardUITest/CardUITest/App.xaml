@@ -6,6 +6,13 @@
              mc:Ignorable="d"
              x:Class="CardUITest.App">
     <Application.Resources>
+
+        <!--  colors  -->
+        <Color x:Key="MainTextColor">#5F6574</Color>
+        <Color x:Key="SubTextColor">#B9BCC3</Color>
+        <Color x:Key="ButtonColor">#5ACB6E</Color>
+        <Color x:Key="PageColor">#F5F7F9</Color>
+
         <OnPlatform x:Key="HeaderFont" x:TypeArguments="x:String">
             <On Platform="Android" Value="Montserrat-Bold.ttf#Montserrat-Bold"/>
             <On Platform="iOS" Value="Montserrat-Bold"/>
@@ -44,6 +51,16 @@
             <Setter Property="FontFamily" Value="{ StaticResource BodyFont }"/>
             <Setter Property="FontSize" Value="20"/>
             <Setter Property="TextColor" Value="Black"/>
+        </Style>
+        <Style x:Key="TabLabel" TargetType="Label">
+            <Setter Property="FontFamily" Value="{StaticResource BodyFont}" />
+            <Setter Property="FontSize" Value="15" />
+            <Setter Property="TextColor" Value="{StaticResource SubTextColor}" />
+        </Style>
+        <Style x:Key="SelectedTabLabel" TargetType="Label">
+            <Setter Property="FontFamily" Value="{StaticResource BodyFont}" />
+            <Setter Property="FontSize" Value="15" />
+            <Setter Property="TextColor" Value="{StaticResource MainTextColor}" />
         </Style>
 
         <Style TargetType="Grid">

@@ -21,40 +21,34 @@
             </Grid.ColumnDefinitions>
 
             <Label
-                x:Name="DetailsTab"
+                x:Name="Sun"
                 Grid.Column="0"
                 HorizontalTextAlignment="Center"
-                Style="{StaticResource LearnMore}"
-                FontSize="15"
-                TextColor="LightGray"
-                Text="Info">
-                <!--<Label.GestureRecognizers>
+                Style="{StaticResource SelectedTabLabel}"
+                Text="Sun">
+                <Label.GestureRecognizers>
                     <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
-                </Label.GestureRecognizers>-->
+                </Label.GestureRecognizers>
             </Label>
             <Label
-                x:Name="ManageTab"
+                x:Name="Water"
                 HorizontalTextAlignment="Center"
                 Grid.Column="1"
-                Style="{StaticResource LearnMore}"
-                FontSize="15"
-                TextColor="LightGray"
-                Text="Info">
-                <!--<Label.GestureRecognizers>
+                Style="{StaticResource TabLabel}"
+                Text="Water">
+                <Label.GestureRecognizers>
                     <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
-                </Label.GestureRecognizers>-->
+                </Label.GestureRecognizers>
             </Label>
             <Label
                 HorizontalTextAlignment="Center"
-                x:Name="EditTab"
+                x:Name="Notes"
                 Grid.Column="2"
-                Style="{StaticResource LearnMore}"
-                FontSize="15"
-                TextColor="LightGray"
-                Text="Info">
-                <!--<Label.GestureRecognizers>
+                Style="{StaticResource TabLabel}"
+                Text="Label">
+                <Label.GestureRecognizers>
                     <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
-                </Label.GestureRecognizers>-->
+                </Label.GestureRecognizers>
             </Label>
         </Grid>
 

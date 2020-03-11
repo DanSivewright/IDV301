@@ -12,6 +12,8 @@ namespace CardUITest.Models
         public Plant()
         {
             Image = "aquilegia.png";
+            Health = 100;
+            Level = 0;
         }
         [PrimaryKey, AutoIncrement]
         public int id { get; set; }
@@ -21,5 +23,7 @@ namespace CardUITest.Models
 
         [MaxLength(6)]
         public string PlantColor { get; set; }
+        public int Health { get; set; }
+        public int Level { get; set; }
     }
 }

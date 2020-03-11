@@ -57,7 +57,40 @@
                 </Label.GestureRecognizers>-->
             </Label>
         </Grid>
-        
+
+        <BoxView
+            Margin="0, 8, 0, 0"
+            Grid.Row="1"
+            HeightRequest="1"
+            VerticalOptions="Center"
+            Color="LightGray" />
+        <BoxView
+            x:Name="SelectionUnderline"
+            Grid.Row="1"
+            CornerRadius="2"
+            HeightRequest="5"
+            HorizontalOptions="Start"
+            Margin="33, 8, 0, 0"
+            WidthRequest="50"
+            Color="{ Binding PlantColor}" />
+
+        <Grid
+            x:Name="InfoContent"
+            Grid.Row="2"
+            IsVisible="True"
+            Margin="0, 20, 0, 0"
+            Opacity="1">
+            <Button
+                BackgroundColor="#f0f0f0"
+                VerticalOptions="Start"
+                CornerRadius="20"
+                Margin="10"
+                FontSize="14"
+                Style="{StaticResource SubHeader}"
+                TextColor="DarkGray"
+                Text="Water Your plant" />
+        </Grid>
+
     </Grid>
     
 </ContentView>

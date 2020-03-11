@@ -27,7 +27,7 @@ namespace CardUITest
         public MainPage()
         {
             InitializeComponent();
-            this.BindingContext = new CardViewModel();
+            //this.BindingContext = new CardViewModel();
         }
 
         protected override void OnAppearing()

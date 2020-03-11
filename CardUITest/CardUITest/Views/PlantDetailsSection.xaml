@@ -45,7 +45,7 @@
                 x:Name="Notes"
                 Grid.Column="2"
                 Style="{StaticResource TabLabel}"
-                Text="Label">
+                Text="Notes">
                 <Label.GestureRecognizers>
                     <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
                 </Label.GestureRecognizers>
@@ -69,22 +69,55 @@
             Color="{ Binding PlantColor}" />
 
         <Grid
-            x:Name="InfoContent"
+            x:Name="SunContent"
+            BackgroundColor="Orange"
             Grid.Row="2"
             IsVisible="True"
             Margin="0, 20, 0, 0"
             Opacity="1">
-            <Button
-                BackgroundColor="#f0f0f0"
-                VerticalOptions="Start"
-                CornerRadius="20"
-                Margin="10"
-                FontSize="14"
-                Style="{StaticResource SubHeader}"
-                TextColor="DarkGray"
-                Text="Water Your plant" />
+            <Label
+                Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."/>
         </Grid>
+
+        <Grid
+            x:Name="WaterContent"
+            BackgroundColor="Green"
+            Grid.Row="2"
+            IsVisible="False"
+            Margin="0, 20, 0, 0"
+            Opacity="0">
+            <Label
+                Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."/>
+        </Grid>
+
+        <Grid
+            x:Name="NotesContent"
+            BackgroundColor="Blue"
+            Grid.Row="2"
+            IsVisible="False"
+            Margin="0, 20, 0, 0"
+            Opacity="0">
+                <StackLayout>
+                    <Entry x:Name="noteBody" Placeholder="Write a note"/>
+
+                    <Button
+                        Text="Save Note"
+                        x:Name="saveNote"
+                        Clicked="saveNote_Clicked"/>
+
+                    <ListView
+                        x:Name="notesList">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <TextCell
+                                    Text="{ Binding NoteBody}"
+                                    Detail="{ Binding CreatedAt}"/>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+            </Grid>
 
     </Grid>
     
-</ContentView>
+</ContentView> 

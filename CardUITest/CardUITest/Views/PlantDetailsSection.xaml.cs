@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using static CardUITest.Objects.CurseWordFilter;
+using CardUITest.Models;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using SQLite;
 
 namespace CardUITest.Views
 {
@@ -14,6 +16,8 @@ namespace CardUITest.Views
     {
         int selectionIndex = 0;
         List<Label> tabHeaders = new List<Label>();
+        List<VisualElement> tabContents = new List<VisualElement>();
+        private Plant _viewModel;
 
         public PlantDetailsSection()
         {
@@ -22,10 +26,13 @@ namespace CardUITest.Views
             tabHeaders.Add(Sun);
             tabHeaders.Add(Water);
             tabHeaders.Add(Notes);
+
+            tabContents.Add(SunContent);
+            tabContents.Add(WaterContent);
+            tabContents.Add(NotesContent);
         }
 
-
-        private void ShowSelection(int newTab)
+        private async Task ShowSelection(int newTab)
         {
             // Don't do anything if the same tab is selected
             if (newTab == selectionIndex) return;
@@ -41,14 +48,50 @@ namespace CardUITest.Views
             selectedTab.Style = selectedStyle;
 
             // Reveal the contents
+            await tabContents[selectionIndex].FadeTo(0);
+            tabContents[selectionIndex].IsVisible = false;
+            tabContents[newTab].IsVisible = true;
+            _ = tabContents[newTab].FadeTo(1);
 
             selectionIndex = newTab;
+
+            using (SQLiteConnection conn = new SQLiteConnection(App.FilePath))
+            {
+                conn.CreateTable<Note>();
+                var notes = conn.Table<Note>().ToList();
+
+                notesList.ItemsSource = notes;
+            }
         }
 
-        private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
+        async private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
             var tabIndex = tabHeaders.IndexOf((Label)sender);
-            ShowSelection(tabIndex);
+            await ShowSelection(tabIndex);
         }
+
+        void saveNote_Clicked(System.Object sender, System.EventArgs e)
+        {
+            // Check for banned words in notebody
+            var filteredNoteBody = FilterBannedWords(noteBody.Text);
+            Console.WriteLine(filteredNoteBody);
+            Note note = new Note()
+            {
+                NoteBody = filteredNoteBody,
+                CreatedAt = DateTime.Now,
+                PlantId = _viewModel.id
+            };
+
+            using (SQLiteConnection conn = new SQLiteConnection(App.FilePath))
+            {
+                conn.CreateTable<Note>();
+                int rowsAdded = conn.Insert(note);
+                var notes = conn.Table<Note>().ToList();
+
+                notesList.ItemsSource = notes;
+            }
+        }
+
+
     }
 }

@@ -1,4 +1,5 @@
 ﻿using SQLite;
+using SQLiteNetExtensions.Attributes;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,5 +26,7 @@ namespace CardUITest.Models
         public string PlantColor { get; set; }
         public int Health { get; set; }
         public int Level { get; set; }
+        [OneToMany]
+        public List<Note> Notes { get; set; }
     }
 }

@@ -26,7 +26,8 @@ namespace CardUITest.Models
         public string PlantColor { get; set; }
         public int Health { get; set; }
         public int Level { get; set; }
-        [OneToMany]
-        public List<Note> Notes { get; set; }
+
+        //[OneToMany]
+        //public List<Note> Notes { get; set; }
     }
 }

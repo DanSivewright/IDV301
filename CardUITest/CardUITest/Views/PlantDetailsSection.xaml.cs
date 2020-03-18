@@ -8,6 +8,7 @@ using CardUITest.Models;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using SQLite;
+using System.Text.RegularExpressions;
 
 namespace CardUITest.Views
 {
@@ -55,13 +56,13 @@ namespace CardUITest.Views
 
             selectionIndex = newTab;
 
-            using (SQLiteConnection conn = new SQLiteConnection(App.FilePath))
-            {
-                conn.CreateTable<Note>();
-                var notes = conn.Table<Note>().ToList();
+            //using (SQLiteConnection conn = new SQLiteConnection(App.FilePath))
+            //{
+            //    conn.CreateTable<Note>();
+            //    var notes = conn.Table<Note>().ToList();
 
-                notesList.ItemsSource = notes;
-            }
+            //    //notesList.ItemsSource = notes;
+            //}
         }
 
         async private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
@@ -73,22 +74,33 @@ namespace CardUITest.Views
         void saveNote_Clicked(System.Object sender, System.EventArgs e)
         {
             // Check for banned words in notebody
-            var filteredNoteBody = FilterBannedWords(noteBody.Text);
-            Console.WriteLine(filteredNoteBody);
+            var filteredNote = FilterBannedWords(noteBody.Text);
+            bool isNegative;
+
+            if (filteredNote.Contains("*"))
+            {
+                isNegative = true;
+            }
+            else
+            {
+                isNegative = false;
+            }
+
+            Console.WriteLine(filteredNote);
+
             Note note = new Note()
             {
-                NoteBody = filteredNoteBody,
+                NoteBody = filteredNote,
                 CreatedAt = DateTime.Now,
-                PlantId = _viewModel.id
+                IsNegative = isNegative,
+                //PlantId = _viewModel.id;
             };
 
             using (SQLiteConnection conn = new SQLiteConnection(App.FilePath))
             {
                 conn.CreateTable<Note>();
                 int rowsAdded = conn.Insert(note);
-                var notes = conn.Table<Note>().ToList();
 
-                notesList.ItemsSource = notes;
             }
         }
 

@@ -45,10 +45,11 @@
             </Label.GestureRecognizers>
         </Label>
 
-        <Grid
+        <StackLayout
             x:Name="PlantDetails"
             Opacity="0"
             InputTransparent="True">
+            
             <Grid
                 Margin="30, 172, 30, 0">
 
@@ -75,7 +76,7 @@
                     BackgroundColor="{Binding PlantColor}"
                     CornerRadius="0, 0, 6, 6"/>
                 
-                <!-- Button Text-->
+                 <!--Button Text-->
                 <Label
                     Grid.Row="1"
                     Grid.ColumnSpan="2"
@@ -92,7 +93,7 @@
                     Grid.ColumnSpan="2"
                     PaintSurface="SKCanvasView_PaintSurface" />
                 
-                <!-- Plant Details Card-->
+                 <!--Plant Details Card-->
                 <Grid 
                     Grid.Row="0" 
                     Grid.Column="1">
@@ -117,7 +118,7 @@
                     </StackLayout>
 
 
-                    <!-- Dividing Line -->
+                     <!--Dividing Line--> 
                     <BoxView
                         HeightRequest=".5"
                         VerticalOptions="End"
@@ -140,14 +141,14 @@
                                     WidthRequest="15" 
                                     HeightRequest="15"/>
 
-                                <!-- Plant Health Percentage -->
+                                 <!--Plant Health Percentage--> 
                                 <Label 
                                     FontSize="16" 
                                     TextColor="Black" 
                                     Style="{StaticResource SubHeader}" 
                                     Text="{ Binding Health, StringFormat='{0:}%'}"/>
                             </StackLayout>
-                            <!-- Plant Health Label-->
+                             <!--Plant Health Label-->
                             <Label
                                 Style="{ StaticResource LearnMore}"
                                 Text="Plant Health"
@@ -173,7 +174,7 @@
                                     Style="{StaticResource SubHeader}" 
                                     Text="{ Binding Level }"/>
                             </StackLayout>
-                            <!-- Plant Health Label-->
+                             <!--Plant Health Label-->
                             <Label
                                 Style="{ StaticResource LearnMore}"
                                 Text="Plant Level"
@@ -189,14 +190,13 @@
             </Grid>
             
             <Image
-            Grid.RowSpan="2"
-            Margin="38, 100, 0, 0"
-            Aspect="AspectFill"
-            HeightRequest="220"
-            HorizontalOptions="Start"
-            Source="aquilegia.png"
-            VerticalOptions="Start"
-            WidthRequest="125"/>
-        </Grid>
+                Margin="38, -600, 0, 0"
+                Aspect="AspectFill"
+                HeightRequest="220"
+                HorizontalOptions="Start"
+                Source="aquilegia.png"
+                VerticalOptions="Start"
+                WidthRequest="125"/>
+        </StackLayout>
     </Grid>
 </ContentView>

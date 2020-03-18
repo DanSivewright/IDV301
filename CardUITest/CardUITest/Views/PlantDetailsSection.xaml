@@ -104,17 +104,6 @@
                         Text="Save Note"
                         x:Name="saveNote"
                         Clicked="saveNote_Clicked"/>
-
-                    <ListView
-                        x:Name="notesList">
-                        <ListView.ItemTemplate>
-                            <DataTemplate>
-                                <TextCell
-                                    Text="{ Binding NoteBody}"
-                                    Detail="{ Binding CreatedAt}"/>
-                            </DataTemplate>
-                        </ListView.ItemTemplate>
-                    </ListView>
                 </StackLayout>
             </Grid>
 

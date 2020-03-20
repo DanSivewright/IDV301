@@ -18,7 +18,14 @@ namespace CardUITest.Views
         int selectionIndex = 0;
         List<Label> tabHeaders = new List<Label>();
         List<VisualElement> tabContents = new List<VisualElement>();
+        private List<Note> plantNotes = new List<Note>();
         private Plant _viewModel;
+
+        protected override void OnBindingContextChanged()
+        {
+            base.OnBindingContextChanged();
+            _viewModel = this.BindingContext as Plant;
+        }
 
         public PlantDetailsSection()
         {
@@ -55,14 +62,6 @@ namespace CardUITest.Views
             _ = tabContents[newTab].FadeTo(1);
 
             selectionIndex = newTab;
-
-            //using (SQLiteConnection conn = new SQLiteConnection(App.FilePath))
-            //{
-            //    conn.CreateTable<Note>();
-            //    var notes = conn.Table<Note>().ToList();
-
-            //    //notesList.ItemsSource = notes;
-            //}
         }
 
         async private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
@@ -93,7 +92,7 @@ namespace CardUITest.Views
                 NoteBody = filteredNote,
                 CreatedAt = DateTime.Now,
                 IsNegative = isNegative,
-                //PlantId = _viewModel.id;
+                PlantId = _viewModel.Id
             };
 
             using (SQLiteConnection conn = new SQLiteConnection(App.FilePath))
@@ -101,6 +100,21 @@ namespace CardUITest.Views
                 conn.CreateTable<Note>();
                 int rowsAdded = conn.Insert(note);
 
+                // Fetching all notes and pushing notes relevant to the specific plant into the list
+                var notes = conn.Table<Note>().ToList();
+
+                foreach (var pNote in notes)
+                {
+                    if (pNote.PlantId == _viewModel.Id)
+                    {
+                        plantNotes.Add(pNote);
+                    }
+                }
+
+                //Setting Item Source for the list view
+
+                notesList.ItemsSource = plantNotes;
+                noteBody.Text = "";
             }
         }
 

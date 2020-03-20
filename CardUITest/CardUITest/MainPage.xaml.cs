@@ -38,10 +38,12 @@ namespace CardUITest
 
             using (SQLiteConnection conn = new SQLiteConnection(App.FilePath))
             {
-                // Delete all the contents of the table
+                //Delete all the contents of the table
                 //conn.DropTable<Plant>();
+                //conn.DropTable<Note>();
 
                 conn.CreateTable<Plant>();
+                conn.CreateTable<Note>();
                 var plants = conn.Table<Plant>().ToList();
 
                 MainCardView.ItemsSource = plants;

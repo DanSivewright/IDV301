@@ -52,7 +52,16 @@ namespace CardUITest.Views
             {
                 _typeface = DependencyService.Get<IFontHelper>().GetSkiaTypefaceFromAssetFont("Montserrat-Bold.ttf");
             }
+        }
 
+        public Plant viewModel
+        {
+            get => _viewModel;
+
+            set
+            {
+                _viewModel = value;
+            }
         }
 
         protected override void OnBindingContextChanged()

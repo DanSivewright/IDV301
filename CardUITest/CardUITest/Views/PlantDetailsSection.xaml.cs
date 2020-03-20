@@ -115,6 +115,18 @@ namespace CardUITest.Views
 
                 notesList.ItemsSource = plantNotes;
                 noteBody.Text = "";
+
+                // Updating the plants experience according to the note
+                if (note.IsNegative == true)
+                {
+                    Plant plant = new Plant();
+                    plant.PlantName = "Test";
+
+                    conn.CreateTable<Plant>();
+                    conn.Update(plant);
+
+                    Console.WriteLine(plant);
+                }
             }
         }
 

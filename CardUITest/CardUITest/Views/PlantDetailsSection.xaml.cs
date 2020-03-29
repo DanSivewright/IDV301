@@ -18,7 +18,7 @@ namespace CardUITest.Views
         int selectionIndex = 0;
         List<Label> tabHeaders = new List<Label>();
         List<VisualElement> tabContents = new List<VisualElement>();
-        private List<Note> plantNotes = new List<Note>();
+        //private List<Note> plantNotes = new List<Note>();
         private Plant _viewModel;
 
         protected override void OnBindingContextChanged()
@@ -62,6 +62,8 @@ namespace CardUITest.Views
             _ = tabContents[newTab].FadeTo(1);
 
             selectionIndex = newTab;
+
+            GetPlantNotes(_viewModel.Id);
         }
 
         async private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
@@ -70,8 +72,69 @@ namespace CardUITest.Views
             await ShowSelection(tabIndex);
         }
 
+        private void GetPlantNotes(int id)
+        {
+            using (SQLiteConnection conn = new SQLiteConnection(App.FilePath))
+            {
+                // Declaring a list for all the notes
+                List<Note> plantNotes = new List<Note>();
+
+                conn.CreateTable<Note>();
+
+                // Fetching all notes and pushing notes relevant to the specific plant into the list
+                var notes = conn.Table<Note>().ToList();
+
+                foreach (var pNote in notes)
+                {
+                    if (pNote.PlantId == id)
+                    {
+                        plantNotes.Add(pNote);
+                    }
+                }
+
+                //Setting Item Source for the list view
+
+                notesList.ItemsSource = plantNotes;
+                noteBody.Text = "";
+            }
+        }
+
+        private void UpdatePlantNotes(Note note, Plant plant)
+        {
+            using (SQLiteConnection conn = new SQLiteConnection(App.FilePath))
+            {
+                // Connecting to the DB and adding the note 
+                conn.CreateTable<Note>();
+                int rowsAdded = conn.Insert(note);
+
+                // After adding the the note update the list
+                GetPlantNotes(plant.Id);
+
+                // Updating plant health according to note
+                if(note.IsNegative == true)
+                {
+                    // Connecting to the plant DB
+                    conn.CreateTable<Plant>();
+                    int addedHealth = 10;
+
+                    var updatePlant = new Plant();
+                    updatePlant.Id = plant.Id;
+                    updatePlant.PlantName = plant.PlantName;
+                    updatePlant.PlantColor = plant.PlantColor;
+                    updatePlant.PlantType = plant.PlantType;
+                    updatePlant.Image = plant.Image;
+                    updatePlant.Health = plant.Health + addedHealth;
+                    updatePlant.Level = plant.Level;
+                    updatePlant.Experience = plant.Experience;
+
+                    conn.Update(updatePlant);
+                }
+            }
+        }
+
         void saveNote_Clicked(System.Object sender, System.EventArgs e)
         {
+
             // Check for banned words in notebody
             var filteredNote = FilterBannedWords(noteBody.Text);
             bool isNegative;
@@ -85,8 +148,6 @@ namespace CardUITest.Views
                 isNegative = false;
             }
 
-            Console.WriteLine(filteredNote);
-
             Note note = new Note()
             {
                 NoteBody = filteredNote,
@@ -95,41 +156,7 @@ namespace CardUITest.Views
                 PlantId = _viewModel.Id
             };
 
-            using (SQLiteConnection conn = new SQLiteConnection(App.FilePath))
-            {
-                conn.CreateTable<Note>();
-                int rowsAdded = conn.Insert(note);
-
-                // Fetching all notes and pushing notes relevant to the specific plant into the list
-                var notes = conn.Table<Note>().ToList();
-
-                foreach (var pNote in notes)
-                {
-                    if (pNote.PlantId == _viewModel.Id)
-                    {
-                        plantNotes.Add(pNote);
-                    }
-                }
-
-                //Setting Item Source for the list view
-
-                notesList.ItemsSource = plantNotes;
-                noteBody.Text = "";
-
-                // Updating the plants experience according to the note
-                if (note.IsNegative == true)
-                {
-                    Plant plant = new Plant();
-                    plant.PlantName = "Test";
-
-                    conn.CreateTable<Plant>();
-                    conn.Update(plant);
-
-                    Console.WriteLine(plant);
-                }
-            }
+            UpdatePlantNotes(note, _viewModel);
         }
-
-
     }
 }

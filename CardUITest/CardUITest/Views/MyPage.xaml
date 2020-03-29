@@ -31,7 +31,7 @@
                 <Grid Grid.Row="0" Grid.Column="1">
 
                     <Grid.RowDefinitions Height="*"/>
-                    <Grid.RowDefinitions Height="*"/>
+                    <!--<Grid.RowDefinitions Height="*"/>-->
 
                     <StackLayout
                         Margin="14, 0, 0, 0"

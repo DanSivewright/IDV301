@@ -70,7 +70,6 @@
 
         <Grid
             x:Name="SunContent"
-            BackgroundColor="Orange"
             Grid.Row="2"
             IsVisible="True"
             Margin="0, 20, 0, 0"
@@ -81,7 +80,6 @@
 
         <Grid
             x:Name="WaterContent"
-            BackgroundColor="Green"
             Grid.Row="2"
             IsVisible="False"
             Margin="0, 20, 0, 0"

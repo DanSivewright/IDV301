@@ -43,8 +43,8 @@ namespace CardUITest
                 //conn.DropTable<Note>();
 
                 conn.CreateTable<Plant>();
-                conn.CreateTable<Note>();
                 var plants = conn.Table<Plant>().ToList();
+                Console.WriteLine(plants);
 
                 MainCardView.ItemsSource = plants;
             }

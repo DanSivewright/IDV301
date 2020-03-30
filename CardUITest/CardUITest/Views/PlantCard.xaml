@@ -151,7 +151,7 @@
                              <!--Plant Health Label-->
                             <Label
                                 Style="{ StaticResource LearnMore}"
-                                Text="Plant Health"
+                                Text="{ Binding Level }"
                                 FontSize="12"
                                 TextColor="LightGray"/>
                         </StackLayout>

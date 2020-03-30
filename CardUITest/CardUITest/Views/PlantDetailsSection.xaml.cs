@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using static CardUITest.Objects.CurseWordFilter;
+using static CardUITest.Objects.Level;
 using CardUITest.Models;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -18,7 +19,6 @@ namespace CardUITest.Views
         int selectionIndex = 0;
         List<Label> tabHeaders = new List<Label>();
         List<VisualElement> tabContents = new List<VisualElement>();
-        //private List<Note> plantNotes = new List<Note>();
         private Plant _viewModel;
 
         protected override void OnBindingContextChanged()
@@ -115,19 +115,43 @@ namespace CardUITest.Views
                 {
                     // Connecting to the plant DB
                     conn.CreateTable<Plant>();
-                    int addedHealth = 10;
+                    int subtractedXp = 500;
+                    double PlantLevel = GetLevelFromXp(subtractedXp);
+                    Console.WriteLine("Your plant level is: " + PlantLevel);
 
-                    var updatePlant = new Plant();
-                    updatePlant.Id = plant.Id;
-                    updatePlant.PlantName = plant.PlantName;
-                    updatePlant.PlantColor = plant.PlantColor;
-                    updatePlant.PlantType = plant.PlantType;
-                    updatePlant.Image = plant.Image;
-                    updatePlant.Health = plant.Health + addedHealth;
-                    updatePlant.Level = plant.Level;
-                    updatePlant.Experience = plant.Experience;
+                    _viewModel.Id = plant.Id;
+                    _viewModel.PlantName = plant.PlantName;
+                    _viewModel.PlantColor = plant.PlantColor;
+                    _viewModel.PlantType = plant.PlantType;
+                    _viewModel.Image = plant.Image;
+                    _viewModel.Health = plant.Health;
+                    _viewModel.Level = GetLevelFromXp((plant.Experience - subtractedXp));
+                    _viewModel.Experience = plant.Experience + subtractedXp;
 
-                    conn.Update(updatePlant);
+                    conn.Update(_viewModel);
+                }
+
+                if (note.IsNegative == false)
+                {
+                    // Connecting to the plant DB
+                    conn.CreateTable<Plant>();
+                    int addedXp = 1000;
+                    double PlantLevel = GetLevelFromXp(addedXp);
+                    Console.WriteLine("Your plant level is: " + PlantLevel);
+
+                    _viewModel.Id = plant.Id;
+                    _viewModel.PlantName = plant.PlantName;
+                    _viewModel.PlantColor = plant.PlantColor;
+                    _viewModel.PlantType = plant.PlantType;
+                    _viewModel.Image = plant.Image;
+                    _viewModel.Health = plant.Health;
+                    _viewModel.Level = GetLevelFromXp((plant.Experience + addedXp));
+                    _viewModel.Experience = plant.Experience + addedXp;
+
+                    conn.Update(_viewModel);
+
+                    MessagingCenter.Send(this, "updatedViewModel", _viewModel);
+
                 }
             }
         }

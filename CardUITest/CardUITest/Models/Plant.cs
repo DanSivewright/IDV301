@@ -25,7 +25,7 @@ namespace CardUITest.Models
         [MaxLength(6)]
         public string PlantColor { get; set; }
         public int Health { get; set; }
-        public int Level { get; set; }
+        public double Level { get; set; }
         public int Experience { get; set; }
     }
 }

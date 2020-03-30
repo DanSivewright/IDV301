@@ -10,6 +10,7 @@ using Xamarin.Forms.Xaml;
 using SkiaSharp.Views.Forms;
 using CardUITest.Models;
 using CardUITest.Services;
+using System.Collections.ObjectModel;
 
 namespace CardUITest.Views
 {
@@ -17,6 +18,7 @@ namespace CardUITest.Views
     public partial class PlantCard : ContentView
     {
         private Plant _viewModel;
+        public Plant _updatedViewModel;
         private readonly float _density;
         private readonly float _cardTopMargin;
         private float _cornerRadius = 60f;
@@ -41,7 +43,11 @@ namespace CardUITest.Views
 
         public PlantCard()
         {
+
             InitializeComponent();
+            MessagingCenter.Subscribe<PlantDetailsSection, Plant>(this, "updatedViewModel", (s, a) => {
+                OnBindingContextChanged();
+            });
 
             _density = (float)Xamarin.Essentials.DeviceDisplay.MainDisplayInfo.Density;
             _cardTopMargin = 400f * _density;
@@ -102,8 +108,7 @@ namespace CardUITest.Views
             {
                 return PlantImage;
             }
-        }
-
+        } 
        
 
         private void CardBackground_PaintSurface(object sender, SkiaSharp.Views.Forms.SKPaintSurfaceEventArgs args)

@@ -20,6 +20,8 @@ namespace CardUITest.Objects
             bWord.Add("Poes");
             bWord.Add("Ass");
             bWord.Add("Dick");
+            bWord.Add("Torbjorn");
+
             // Add more here!
             return bWord;
         }

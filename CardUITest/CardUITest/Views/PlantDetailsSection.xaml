@@ -75,6 +75,8 @@
             Margin="0, 20, 0, 0"
             Opacity="1">
             <Button
+                x:Name="SunlightButton"
+                Clicked="SunlightButton_Clicked"
                 Text="Give me some sun"/>
         </Grid>
 
@@ -85,6 +87,8 @@
             Margin="0, 20, 0, 0"
             Opacity="0">
             <Button
+                x:Name="WaterButton"
+                Clicked="WaterButton_Clicked"
                 Text="Give me some water"/>
         </Grid>
 

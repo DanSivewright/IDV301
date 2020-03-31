@@ -235,5 +235,113 @@ namespace CardUITest.Views
 
             UpdatePlantNotes(note, _viewModel);
         }
+
+        private void WaterButton_Clicked(object sender, EventArgs e)
+        {
+            Water water = new Water()
+            {
+                CreatedAt = DateTime.Now,
+                PlantId = _viewModel.Id
+            };
+            using (SQLiteConnection conn = new SQLiteConnection(App.FilePath))
+            {
+                conn.CreateTable<Water>();
+                int rowsAdded = conn.Insert(water);
+
+                int addedXp = 1000;
+                int addedHealth = 15;
+
+                if (_viewModel.Health >= 90)
+                {
+                    // Calculating the remainding health and adding to get the plant to 100% health
+                    addedHealth = 100 - _viewModel.Health;
+                }
+                else if (_viewModel.Health <= 10)
+                {
+                    addedHealth = -_viewModel.Health;
+                }
+
+                var waterList = conn.Table<Water>().ToList();
+                var counter = 0;
+                foreach (var waterObj in waterList)
+                {
+                    DateTime previousDate = waterObj.CreatedAt;
+                    if (waterObj.CreatedAt >= todaysDate && waterObj.CreatedAt <= previousDate.AddMinutes(5) && waterObj.PlantId == _viewModel.Id)
+                    {
+                        counter++;
+                        if (counter > 4)
+                        {
+                            Console.WriteLine("Slow down! You're drowning it.");
+                            addedHealth = -10;
+                        }
+                    }
+                }
+
+                _viewModel.Id = _viewModel.Id;
+                _viewModel.PlantName = _viewModel.PlantName;
+                _viewModel.PlantColor = _viewModel.PlantColor;
+                _viewModel.PlantType = _viewModel.PlantType;
+                _viewModel.Image = _viewModel.Image;
+                _viewModel.Health = _viewModel.Health + addedHealth;
+                _viewModel.Level = GetLevelFromXp((_viewModel.Experience + addedXp));
+                _viewModel.Experience = _viewModel.Experience + addedXp;
+
+                conn.Update(_viewModel);
+            }
+        }
+
+        private void SunlightButton_Clicked(object sender, EventArgs e)
+        {
+            Sunlight sunlight = new Sunlight()
+            {
+                CreatedAt = DateTime.Now,
+                PlantId = _viewModel.Id
+            };
+            using (SQLiteConnection conn = new SQLiteConnection(App.FilePath))
+            {
+                conn.CreateTable<Sunlight>();
+                int rowsAdded = conn.Insert(sunlight);
+
+                int addedXp = 1000;
+                int addedHealth = 15;
+
+                if (_viewModel.Health >= 90)
+                {
+                    // Calculating the remainding health and adding to get the plant to 100% health
+                    addedHealth = 100 - _viewModel.Health;
+                }
+                else if (_viewModel.Health <= 10)
+                {
+                    addedHealth = -_viewModel.Health;
+                }
+
+                var sunlightList = conn.Table<Sunlight>().ToList();
+                var counter = 0;
+                foreach (var sun in sunlightList)
+                {
+                    DateTime previousDate = sun.CreatedAt;
+                    if (sun.CreatedAt >= todaysDate && sun.CreatedAt <= previousDate.AddMinutes(5) && sun.PlantId == _viewModel.Id)
+                    {
+                        counter++;
+                        if (counter > 4)
+                        {
+                            Console.WriteLine("Slow down! You're drowning it.");
+                            addedHealth = -10;
+                        }
+                    }
+                }
+
+                _viewModel.Id = _viewModel.Id;
+                _viewModel.PlantName = _viewModel.PlantName;
+                _viewModel.PlantColor = _viewModel.PlantColor;
+                _viewModel.PlantType = _viewModel.PlantType;
+                _viewModel.Image = _viewModel.Image;
+                _viewModel.Health = _viewModel.Health + addedHealth;
+                _viewModel.Level = GetLevelFromXp((_viewModel.Experience + addedXp));
+                _viewModel.Experience = _viewModel.Experience + addedXp;
+
+                conn.Update(_viewModel);
+            }
+        }
     }
 }

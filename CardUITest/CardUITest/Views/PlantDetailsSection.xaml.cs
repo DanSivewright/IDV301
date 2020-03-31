@@ -20,6 +20,7 @@ namespace CardUITest.Views
         List<Label> tabHeaders = new List<Label>();
         List<VisualElement> tabContents = new List<VisualElement>();
         private Plant _viewModel;
+        private DateTime todaysDate;
 
         protected override void OnBindingContextChanged()
         {
@@ -30,6 +31,8 @@ namespace CardUITest.Views
         public PlantDetailsSection()
         {
             InitializeComponent();
+
+            todaysDate = DateTime.Today;
 
             tabHeaders.Add(Sun);
             tabHeaders.Add(Water);
@@ -115,18 +118,42 @@ namespace CardUITest.Views
                 {
                     // Connecting to the plant DB
                     conn.CreateTable<Plant>();
-                    int subtractedXp = 500;
-                    double PlantLevel = GetLevelFromXp(subtractedXp);
-                    Console.WriteLine("Your plant level is: " + PlantLevel);
+
+                    // variables to update plant health and 
+                    int subtractedHealth = 15;
+
+                    if (_viewModel.Health <= 10)
+                    {
+                        subtractedHealth = _viewModel.Health;
+                    }
+
+                    // All the negative notes for the plant are pulled 
+                    // If the date is LESS than the (PREVIOUS DATE + 30 mins) update the counter
+                    // If the counter is greater than 4 ( That means 4 notes in quick succession ) it has an even worse outcome on the plants health
+                    var notes = conn.Table<Note>().ToList();
+                    var counter = 0;
+                    foreach (var pNote in notes)
+                    {
+                        DateTime previousDate = pNote.CreatedAt;
+                        if (pNote.CreatedAt >= todaysDate && pNote.CreatedAt <= previousDate.AddMinutes(5) && pNote.PlantId == _viewModel.Id)
+                        {
+                            counter++;
+                            if (counter > 4)
+                            {
+                                Console.WriteLine("You're plant can't take it anymore, stop it!");
+                                subtractedHealth = 30;
+                            }
+                        }
+                    }
 
                     _viewModel.Id = plant.Id;
                     _viewModel.PlantName = plant.PlantName;
                     _viewModel.PlantColor = plant.PlantColor;
                     _viewModel.PlantType = plant.PlantType;
                     _viewModel.Image = plant.Image;
-                    _viewModel.Health = plant.Health;
-                    _viewModel.Level = GetLevelFromXp((plant.Experience - subtractedXp));
-                    _viewModel.Experience = plant.Experience + subtractedXp;
+                    _viewModel.Health = plant.Health - subtractedHealth;
+                    _viewModel.Level = GetLevelFromXp(plant.Experience);
+                    _viewModel.Experience = plant.Experience;
 
                     conn.Update(_viewModel);
                 }
@@ -135,23 +162,49 @@ namespace CardUITest.Views
                 {
                     // Connecting to the plant DB
                     conn.CreateTable<Plant>();
+
+                    // variables to update plant health and xp
                     int addedXp = 1000;
-                    double PlantLevel = GetLevelFromXp(addedXp);
-                    Console.WriteLine("Your plant level is: " + PlantLevel);
+                    int addedHealth = 15;
+
+                    if (_viewModel.Health >= 90)
+                    {
+                        // Calculating the remainding health and adding to get the plant to 100% health
+                        addedHealth = 100 - _viewModel.Health;
+                    }
+
+                    // All the positive notes for the plant are pulled 
+                    // If the date is LESS than the (PREVIOUS DATE + 30 mins) update the counter
+                    // If the counter is greater than 4 ( That means 4 notes in quick succession ) it has a negative outcome on the plants health
+                    var notes = conn.Table<Note>().ToList();
+                    var counter = 0;
+                    foreach (var pNote in notes)
+                    {
+                        DateTime previousDate = pNote.CreatedAt;
+                        if (pNote.CreatedAt >= todaysDate && pNote.CreatedAt <= previousDate.AddMinutes(5) && pNote.PlantId == _viewModel.Id)
+                        {
+                            counter++;
+                            if (counter > 4)
+                            {
+                                Console.WriteLine("You're plant doesn't trust you anymore, you've said too many nice things");
+                                addedHealth = -10;
+                            }
+                        }
+                    }
+
 
                     _viewModel.Id = plant.Id;
                     _viewModel.PlantName = plant.PlantName;
                     _viewModel.PlantColor = plant.PlantColor;
                     _viewModel.PlantType = plant.PlantType;
                     _viewModel.Image = plant.Image;
-                    _viewModel.Health = plant.Health;
+                    _viewModel.Health = plant.Health + addedHealth;
                     _viewModel.Level = GetLevelFromXp((plant.Experience + addedXp));
                     _viewModel.Experience = plant.Experience + addedXp;
 
                     conn.Update(_viewModel);
 
-                    MessagingCenter.Send(this, "updatedViewModel", _viewModel);
-
+                    //MessagingCenter.Send(this, "updatedViewModel", _viewModel);
                 }
             }
         }

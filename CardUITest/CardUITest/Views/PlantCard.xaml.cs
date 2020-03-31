@@ -45,9 +45,9 @@ namespace CardUITest.Views
         {
 
             InitializeComponent();
-            MessagingCenter.Subscribe<PlantDetailsSection, Plant>(this, "updatedViewModel", (s, a) => {
-                OnBindingContextChanged();
-            });
+            //MessagingCenter.Subscribe<PlantDetailsSection, Plant>(this, "updatedViewModel", (s, a) => {
+            //    OnBindingContextChanged();
+            //});
 
             _density = (float)Xamarin.Essentials.DeviceDisplay.MainDisplayInfo.Density;
             _cardTopMargin = 400f * _density;

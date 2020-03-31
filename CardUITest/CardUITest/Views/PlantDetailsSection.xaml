@@ -74,8 +74,8 @@
             IsVisible="True"
             Margin="0, 20, 0, 0"
             Opacity="1">
-            <Label
-                Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."/>
+            <Button
+                Text="Give me some sun"/>
         </Grid>
 
         <Grid
@@ -84,8 +84,8 @@
             IsVisible="False"
             Margin="0, 20, 0, 0"
             Opacity="0">
-            <Label
-                Text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."/>
+            <Button
+                Text="Give me some water"/>
         </Grid>
 
         <Grid

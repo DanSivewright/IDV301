@@ -27,5 +27,10 @@ namespace CardUITest.Models
         public int Health { get; set; }
         public double Level { get; set; }
         public int Experience { get; set; }
+
+        public string WaterMessage { get; set; }
+        public string SunMessage { get; set; }
+        public string NoteMessage { get; set; }
+
     }
 }

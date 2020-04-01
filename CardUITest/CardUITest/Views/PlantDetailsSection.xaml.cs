@@ -140,7 +140,7 @@ namespace CardUITest.Views
                             counter++;
                             if (counter > 4)
                             {
-                                Console.WriteLine("You're plant can't take it anymore, stop it!");
+                                _viewModel.NoteMessage = "You're plant can't take it anymore, stop it!";
                                 subtractedHealth = 30;
                             }
                         }
@@ -186,7 +186,7 @@ namespace CardUITest.Views
                             counter++;
                             if (counter > 4)
                             {
-                                Console.WriteLine("You're plant doesn't trust you anymore, you've said too many nice things");
+                                _viewModel.NoteMessage = "You're plant doesn't trust you anymore, you've said too many nice things";
                                 addedHealth = -10;
                             }
                         }
@@ -271,7 +271,7 @@ namespace CardUITest.Views
                         counter++;
                         if (counter > 4)
                         {
-                            Console.WriteLine("Slow down! You're drowning it.");
+                            _viewModel.WaterMessage = "Slow down! You're drowning it.";
                             addedHealth = -10;
                         }
                     }
@@ -325,7 +325,7 @@ namespace CardUITest.Views
                         counter++;
                         if (counter > 4)
                         {
-                            Console.WriteLine("Slow down! You're drowning it.");
+                            _viewModel.SunMessage = "Help! I'm burning";
                             addedHealth = -10;
                         }
                     }

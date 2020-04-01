@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:forms="clr-namespace:Lottie.Forms;assembly=Lottie.Forms"
              mc:Ignorable="d"
              x:Class="CardUITest.Views.PlantDetailsSection">
 
@@ -72,24 +73,68 @@
             x:Name="SunContent"
             Grid.Row="2"
             IsVisible="True"
-            Margin="0, 20, 0, 0"
+            Margin="0, 30, 0, 0"
             Opacity="1">
-            <Button
-                x:Name="SunlightButton"
-                Clicked="SunlightButton_Clicked"
-                Text="Give me some sun"/>
+            <FlexLayout
+                Direction="Row"
+                JustifyContent="SpaceEvenly">
+                <forms:AnimationView
+                    HeightRequest="30"
+                    VerticalOptions="Start"
+                    WidthRequest="30"
+                    Animation="sunlight.json"
+                    Loop="True"
+                    AutoPlay="True"/>
+                <StackLayout
+                    Orientation="Vertical">
+                    <Label
+                        Text="Give me some sun"
+                        TextColor="Black"
+                        Style="{StaticResource SubHeader}"/>
+                    <Label
+                        Text="{ Binding SunMessage }"
+                        FontSize="15"
+                        TextColor="LightGray"
+                        />
+                </StackLayout>
+                <FlexLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="SunlightButton_Clicked" />
+                </FlexLayout.GestureRecognizers>
+            </FlexLayout>
         </Grid>
 
         <Grid
             x:Name="WaterContent"
             Grid.Row="2"
             IsVisible="False"
-            Margin="0, 20, 0, 0"
+            Margin="0, 30, 0, 0"
             Opacity="0">
-            <Button
-                x:Name="WaterButton"
-                Clicked="WaterButton_Clicked"
-                Text="Give me some water"/>
+            <FlexLayout
+                Direction="Row"
+                JustifyContent="SpaceEvenly">
+                <forms:AnimationView
+                    HeightRequest="30"
+                    VerticalOptions="Start"
+                    WidthRequest="30"
+                    Animation="water.json"
+                    Loop="True"
+                    AutoPlay="True"/>
+                <StackLayout
+                    Orientation="Vertical">
+                    <Label
+                        Text="Water Me"
+                        TextColor="Black"
+                        Style="{StaticResource SubHeader}"/>
+                    <Label
+                        Text="{ Binding WaterMessage }"
+                        FontSize="15"
+                        TextColor="LightGray"
+                        />
+                </StackLayout>
+                <FlexLayout.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="WaterButton_Clicked" />
+                </FlexLayout.GestureRecognizers>
+            </FlexLayout>
         </Grid>
 
         <Grid
@@ -104,7 +149,12 @@
             </Grid.RowDefinitions>
             <StackLayout
                 Grid.Row="0">
-                    <Entry x:Name="noteBody" Placeholder="Write a note"/>
+                <Label
+                    FontSize="15"
+                    TextColor="LightGray"
+                    Margin="0, 0, 0, 4"
+                    Text="{ Binding NoteMessage }"/>
+                <Entry x:Name="noteBody" Placeholder="Write a note"/>
 
                     <Button
                         Text="Save Note"

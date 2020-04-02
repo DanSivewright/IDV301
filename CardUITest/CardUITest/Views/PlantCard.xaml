@@ -28,7 +28,7 @@
         <Label 
                 Text="{Binding PlantType}"
                 x:Name="PlantType"
-                Margin="40,550,0,0"
+                Margin="40,667,0,0"
                 Style="{StaticResource SubHeader}"
                 HorizontalOptions="Start"
                 VerticalOptions="Start"/>
@@ -56,7 +56,7 @@
 
 
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="0"/>
+                    <RowDefinition Height="138"/>
                     <RowDefinition Height="46"/>
                     <RowDefinition Height="46"/>
                     <RowDefinition Height="300"/>

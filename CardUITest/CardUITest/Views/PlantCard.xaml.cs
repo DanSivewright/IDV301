@@ -45,6 +45,7 @@ namespace CardUITest.Views
         {
 
             InitializeComponent();
+            Console.WriteLine(_viewModel);
             //MessagingCenter.Subscribe<PlantDetailsSection, Plant>(this, "updatedViewModel", (s, a) => {
             //    OnBindingContextChanged();
             //});

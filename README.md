@@ -1,35 +1,37 @@
 # IDV301 
-This is the project description 
-![Dog](https://www.rd.com/wp-content/uploads/2019/09/GettyImages-621924830.jpg)
+This is a virtual pet application which aims to showcase the cross-platform capabilities of C# and Xamarin Forms
+![Alo Logo](Images/AloScreen.png)
 
 ## Getting Started
 1. Install [Visual Studio Community](https://visualstudio.microsoft.com/vs/community/) and [xamarin forms](https://docs.microsoft.com/en-us/xamarin/xamarin-forms/) 
 2. Clone the repository 
-> follow this command
+> git clone https://github.com/DanSivewright/IDV301.git
 
 3. Open Project in Visual Studio
 
-## Running & Tests
-This test checks Foo and Bar
-
-> This is will be a code snippet
+4. Once open, tap the menu in the top right and ensure you create two plants before proceeding.
 
 ## Features and Functionality 
 
 Here are the core features and functionality
 
-### Features 
-* Color Picker
-* Create a custom plant 
-* Plant Animations
-
-### Functions
-* Watering 
-* Sunlight 
-* Notes 
+### Features & Functionality
+* Creating your own plant multiple times
+* Watering the plant
+* Giving it sunlight 
+* Writing Notes to your plant
+#### Additional Features
+* The plants health in negatively impacted if it is given too much water and sunlight, as well as writing too many positive or negative notes. 
 
 ## Built With
-**Microsfots Xamarin Forms**
+**C#**
+**Microsofts Xamarin Forms**
+
+
+#### Aditional Technologies/ Nuget Packages
+* SkiaSharp - [GitHub](https://github.com/mono/SkiaSharp)
+* CardsView by [Andrei Misiukevich](https://github.com/AndreiMisiukevich/CardView)
+* [SQLite](https://www.nuget.org/packages/System.Data.SQLite) Nuget Package
 
 ## Contributing
 

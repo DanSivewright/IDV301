@@ -15,6 +15,9 @@
              x:Class="CardUITest.MainPage">
 
     <Grid>
+        <Grid.GestureRecognizers>
+            <TapGestureRecognizer Tapped="UpdateViewModel_Tapped"/>
+        </Grid.GestureRecognizers>
         <cards:CardsView  
             
             x:Name="MainCardView"

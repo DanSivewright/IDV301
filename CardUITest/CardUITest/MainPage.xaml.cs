@@ -23,6 +23,7 @@ namespace CardUITest
     {
         private double _plantImageTranslationY = 180;
         private double _movementFactor = 100;
+        public List<Plant> plants;
 
         public MainPage()
         {
@@ -43,7 +44,7 @@ namespace CardUITest
                 //conn.DropTable<Note>();
 
                 conn.CreateTable<Plant>();
-                var plants = conn.Table<Plant>().ToList();
+                plants = conn.Table<Plant>().ToList();
                 Console.WriteLine(plants);
 
                 MainCardView.ItemsSource = plants;
@@ -199,6 +200,20 @@ namespace CardUITest
         async private void animateMenu(CardState cardState)
         {
             await Navigation.PushModalAsync(new NavigationMenu());
+        }
+
+        private void UpdateViewModel_Tapped(object sender, EventArgs e)
+        {
+            using (SQLiteConnection conn = new SQLiteConnection(App.FilePath))
+            {
+                conn.CreateTable<Plant>();
+                var updatedPlants = conn.Table<Plant>().ToList();
+
+                if (plants != updatedPlants)
+                {
+                    MainCardView.ItemsSource = updatedPlants;
+                }
+            }
         }
     }
 }
